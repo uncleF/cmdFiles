@@ -8,9 +8,9 @@ IF "%1"=="" (
 	md %1
 	cd %1
 	md project
-	xcopy D:\Projects\Eclipse\TemplateX\project project /s /q /y
-	xcopy D:\Projects\Eclipse\TemplateX\build.xml /q /y
-	xcopy D:\Projects\Eclipse\TemplateX\config.rb /q /y
+	xcopy D:\Projects\Eclipse\AppX\project project /s /q /y
+	xcopy D:\Projects\Eclipse\AppX\build.xml /q /y
+	xcopy D:\Projects\Eclipse\AppX\config.rb /q /y
 	del /s /f /q txex.*.*
 	del /s /f /q txdemo.*.*
 	md sources
@@ -19,5 +19,10 @@ IF "%1"=="" (
 	cd project
 	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d"
 	cd ..
-	replaceText build.xml TemplateX %1
+	replaceText build.xml AppX %1
+	IF "%2"=="" (
+		replaceText build.xml appx %1
+	) ELSE (
+		replaceText build.xml appx %2
+	)
 )
