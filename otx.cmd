@@ -1,4 +1,4 @@
 @ECHO OFF
 
-D:
+%homeDirProjects%
 cd %dirProjectsWeb%

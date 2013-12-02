@@ -11,12 +11,14 @@ IF "%1"=="" (
 	xcopy %dirProjectsWeb%\project project /s /q /y
 	xcopy %dirProjectsWeb%\build.xml /q /y
 	xcopy %dirProjectsWeb%\config.rb /q /y
-	del /s /f /q txex.*.*
-	del /s /f /q txdemo.*.*
+	# xcopy %dirProjectsWeb%\gruntfile.js /q /y
+	# xcopy %dirProjectsWeb%\cssorder.json /q /y
+	# xcopy %dirProjectsWeb%\package.json /q /y
+	md meta
+	md design
+	md design\sprites
+	del /s /f /q tx.*.*
 	del /s /f /q .DS_Store
-	md sources
-	md sources\"project meta images"
-	md sources\"project sources"
 	cd project
 	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d"
 	cd ..

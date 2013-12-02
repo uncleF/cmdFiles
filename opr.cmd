@@ -1,6 +1,6 @@
 @ECHO OFF
 
-D:
+%homeDirProjects%
 IF NOT "%1"=="" (
 	cd %dirProjects%\%1
 ) ELSE (
