@@ -9,7 +9,7 @@ IF NOT "%1"=="" (
 	)
 )
 IF %shareFlag%=="true" (
-	ant -propertyfile %buildProperties% -Dbuild.share=share
+	ant -propertyfile %fileBuildProperties% -Dbuild.share=share
 ) ELSE (
-	ant -propertyfile %buildProperties%
+	ant -propertyfile %fileBuildProperties%
 )
