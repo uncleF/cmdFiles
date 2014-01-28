@@ -4,7 +4,7 @@ IF "%1"=="" (
 	echo "Project Name Missing"
 ) ELSE (
 	echo "Setting Up Project %1"
-	opr
+	propn
 	md %1
 	cd %1
 	md project
