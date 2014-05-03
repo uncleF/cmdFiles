@@ -41,9 +41,9 @@ set builder="grunt"
 :build
 	if %builder%=="ant" (
 		if %shareFlag%=="true" (
-			ant -propertyfile %fileBuildProperties% -Dbuild.share=share
+			ant -propertyfile %buildProperties% -Dbuild.share=share
 		) else (
-			ant -propertyfile %fileBuildProperties%
+			ant -propertyfile %buildProperties%
 		)
 	) else (
 		if %shareFlag%=="true" (
