@@ -1,4 +1,4 @@
-@ECHO OFF
+@echo off
 
 %homeDirProjects%
 IF NOT "%1"=="" (

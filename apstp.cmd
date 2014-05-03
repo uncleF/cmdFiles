@@ -1,31 +1,60 @@
-@ECHO OFF
+@echo off
 
-IF "%1"=="" (
-	echo "Project Name Missing"
-) ELSE (
-	echo "Setting Up Project %1"
-	propn
+if "%1"=="" (
+	goto errorName
+) else (
+	goto projectSetup
+)
+
+:projectSetup
+	echo Setting Up Project %1
+	%homeDirProjects%
+	cd %dirProjects%
 	md %1
 	cd %1
-	md project
-	xcopy %dirProjectsApp%\project project /s /q /y
-	xcopy %dirProjectsApp%\build.xml /q /y
-	xcopy %dirProjectsApp%\config.rb /q /y
-	# xcopy %dirProjectsApp%\gruntfile.js /q /y
-	# xcopy %dirProjectsApp%\cssorder.json /q /y
-	# xcopy %dirProjectsApp%\package.json /q /y
+	md dev
+	xcopy %dirProjectsApp%\dev dev /s /q /y
+	xcopy %dirProjectsApp%\gruntfile.js /q /y
+	xcopy %dirProjectsApp%\csscombConfig.json /q /y
+	xcopy %dirProjectsApp%\package.json /q /y
 	md meta
 	md design
-	md design\sprites
-	del /s /f /q tx.*.*
+	md sources
 	del /s /f /q .DS_Store
-	cd project
+	cd dev
 	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d"
 	cd ..
-	replaceText build.xml AppX %1
-	IF "%2"=="" (
-		replaceText build.xml appx %1
-	) ELSE (
-		replaceText build.xml appx %2
+	replaceText gruntfile.js AppX %1
+	if "%2"=="" (
+		replaceText gruntfile.js appx %1
+	) else (
+		replaceText gruntfile.js appx %2
 	)
-)
+	goto npmQuestion
+
+:npmQuestion
+	set npm=
+	set /p npm="Do You Want to Install npm Dependencies (y/n)? "
+	if %npm%==y (
+		goto npmInstall
+	) else (
+		if %npm%==n (
+			goto exit
+		) else (
+			goto errorAnswer
+		)
+	)
+
+:npmInstall
+	npm install
+	goto exit
+
+:errorName
+	echo Please Enter Project Name
+	goto exit
+
+:errorAnswer
+	echo Please Answer (y)es or (n)o
+	goto npmQuestion
+
+:exit
