@@ -4,8 +4,8 @@ set shareFlag="false"
 set builder="grunt"
 
 :option1
-	if "%1"=="-s" (
-		set shareFlag="true"
+	if "%1"=="-c" (
+		set criticalFlag="true"
 		goto option2
 	) else (
 		if "%1"=="-a" (
@@ -22,8 +22,8 @@ set builder="grunt"
 
 :option2
 
-	if "%2"=="-s" (
-		set shareFlag="true"
+	if "%2"=="-c" (
+		set criticalFlag="true"
 		goto build
 	) else (
 		if "%2"=="-a" (
@@ -40,14 +40,10 @@ set builder="grunt"
 
 :build
 	if %builder%=="ant" (
-		if %shareFlag%=="true" (
-			ant -propertyfile %buildProperties% -Dbuild.share=share
-		) else (
-			ant -propertyfile %buildProperties%
-		)
+		ant -propertyfile %buildProperties%
 	) else (
-		if %shareFlag%=="true" (
-			grunt build-share
+		if %criticalFlag%=="true" (
+			grunt build-critical
 		) else (
 			grunt build
 		)
