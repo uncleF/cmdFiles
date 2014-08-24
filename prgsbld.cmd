@@ -1,15 +1,15 @@
 @echo off
 
 set criticalFlag="false"
-set builder="grunt"
+set template="Base"
 
 :option1
 	if "%1"=="-c" (
 		set criticalFlag="true"
 		goto option2
 	) else (
-		if "%1"=="-a" (
-			set builder="ant"
+		if "%1"!="-c" (
+			set template=%1
 			goto option2
 		) else (
 			if "%1"=="" (
