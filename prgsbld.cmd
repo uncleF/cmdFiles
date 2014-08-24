@@ -8,49 +8,28 @@ set template="Base"
 		set criticalFlag="true"
 		goto option2
 	) else (
-		if "%1"!="-c" (
-			set template=%1
-			goto option2
+		if "%1"=="" (
+			goto build
 		) else (
-			if "%1"=="" (
-				goto build
-			) else (
-				goto errorOption
-			)
+			set template=%1
+			goto build
 		)
 	)
 
 :option2
-
-	if "%2"=="-c" (
-		set criticalFlag="true"
+	if "%2"=="" (
 		goto build
 	) else (
-		if "%2"=="-a" (
-			set builder="ant"
-			goto build
-		) else (
-			if "%2"=="" (
-				goto build
-			) else (
-				goto errorOption
-			)
-		)
+		set template=%1
+		goto build
 	)
 
 :build
-	if %builder%=="ant" (
-		ant -propertyfile %buildProperties%
+	if %criticalFlag%=="true" (
+		grunt build-critical --gruntfile template%template%\gruntfile.js --base .\ --gstemplate=template%template%
 	) else (
-		if %criticalFlag%=="true" (
-			grunt build-critical
-		) else (
-			grunt build
-		)
+		grunt build --gruntfile template%template%\gruntfile.js --base .\ --gstemplate=template%template%
 	)
-	cd build
-	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d"
-	cd ..
 	goto exit
 
 :errorOption

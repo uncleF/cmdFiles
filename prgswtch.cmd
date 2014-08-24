@@ -3,18 +3,22 @@
 set template="Base"
 
 :option1
-	if "%1" (
-		set tempalte=%1
+	if "%1"=="" (
+		goto check
+	) else (
+		set template=%1
+		goto check
 	)
 
-if exist template%tempalte\dev (
-	goto watch
-) else (
-	goto errorDirectory
-)
+:check
+	if exist template%template%\dev (
+		goto watch
+	) else (
+		goto errorDirectory
+	)
 
 :watch
-	grunt watch-project --gruntfile template%template\gruntfile.js --base .\ --gstemplate=template%template
+	grunt watch-project --gruntfile template%template%\gruntfile.js --base .\ --gstemplate=template%template%
 	goto exit
 
 :errorOption

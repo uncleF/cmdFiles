@@ -22,7 +22,9 @@ if "%1"=="" (
 	cd dev
 	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d"
 	cd ..
-	replaceText gruntfile.js TemplateX %1
+	replaceText gruntfile.js GoodSellerTemplates GoodSellerTemplate%1
+	cd ..
+	goto exit
 
 :errorName
 	echo Please Enter Template Number
