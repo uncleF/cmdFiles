@@ -15,6 +15,7 @@ if "%1"=="" (
 	md dev
 	xcopy %dirProjects%\GoodSellerTemplates\templateBase\dev dev /s /q /y
 	xcopy %dirProjects%\GoodSellerTemplates\templateBase\gruntfile.js /q /y
+	xcopy %dirProjects%\GoodSellerTemplates\templateBase\GStemplate.sublime-project .\GStemplate%1.sublime-project /q /y
 	md meta
 	md design
 	md sources
@@ -23,6 +24,7 @@ if "%1"=="" (
 	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d"
 	cd ..
 	replaceText gruntfile.js GoodSellerTemplates GoodSellerTemplate%1
+	replaceText GStemplate%1.sublime-project GoodSellerTemplates GoodSellerTemplate%1
 	cd ..
 	goto exit
 

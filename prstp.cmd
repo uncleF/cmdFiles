@@ -17,6 +17,7 @@ if "%1"=="" (
 	xcopy %dirProjectsWeb%\gruntfile.js /q /y
 	xcopy %dirProjectsWeb%\csscombConfig.json /q /y
 	xcopy %dirProjectsWeb%\package.json /q /y
+	xcopy %dirProjectsWeb%\TemplateX.sublime-project .\%1.sublime-project /q /y
 	md meta
 	md design
 	md sources
@@ -25,6 +26,7 @@ if "%1"=="" (
 	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d"
 	cd ..
 	replaceText gruntfile.js TemplateX %1
+	replaceText %1.sublime-project TemplateX %1
 	goto npmQuestion
 
 :npmQuestion
