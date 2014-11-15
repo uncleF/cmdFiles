@@ -15,7 +15,7 @@ if "%1"=="" (
 	md dev
 	xcopy %dirProjectsApp%\dev dev /s /q /y
 	xcopy %dirProjectsApp%\gruntfile.js /q /y
-	xcopy %dirProjectsApp%\csscombConfig.json /q /y
+	xcopy %dirProjectsApp%\.*rc /q /y
 	xcopy %dirProjectsApp%\package.json /q /y
 	xcopy %dirProjectsApp%\AppX.sublime-project .\%1.sublime-project /q /y
 	md meta
