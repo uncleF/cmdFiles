@@ -15,8 +15,10 @@ if "%1"=="" (
 	md dev
 	xcopy %dirProjectsApp%\dev dev /s /q /y
 	xcopy %dirProjectsApp%\gruntfile.js /q /y
-	xcopy %dirProjectsApp%\.*rc /q /y
 	xcopy %dirProjectsApp%\package.json /q /y
+	xcopy %dirProjectsApp%\backstop.json /q /y
+	xcopy %dirProjectsApp%\.*rc /q /y
+	xcopy %dirProjectsApp%/.editorconfig /q /y
 	xcopy %dirProjectsApp%\AppX.sublime-project .\%1.sublime-project /q /y
 	md meta
 	md design

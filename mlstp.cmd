@@ -15,8 +15,10 @@ if "%1"=="" (
 	md dev
 	xcopy %dirProjectsMail%\dev dev /s /q /y
 	xcopy %dirProjectsMail%\gruntfile.js /q /y
-	xcopy %dirProjectsMail%\.*rc /q /y
 	xcopy %dirProjectsMail%\package.json /q /y
+	xcopy %dirProjectsMail%\backstop.json /q /y
+	xcopy %dirProjectsMail%\.*rc /q /y
+	xcopy %dirProjectsMail%/.editorconfig /q /y
 	xcopy %dirProjectsMail%\MailX.sublime-project .\%1.sublime-project /q /y
 	md design
 	md sources
