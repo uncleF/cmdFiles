@@ -1,42 +1,17 @@
 @echo off
 
-set criticalFlag="false"
-set builder="grunt"
+set criticalFlag=false
+set builder=grunt
 
-:option1
-	if "%1"=="-c" (
-		set criticalFlag="true"
-		goto option2
+if "%1"=="-c" (
+	set criticalFlag=true
+) else (
+	if "%1"=="-a" (
+		set builder=ant
 	) else (
-		if "%1"=="-a" (
-			set builder="ant"
-			goto option2
-		) else (
-			if "%1"=="" (
-				goto build
-			) else (
-				goto errorOption
-			)
-		)
+		goto errorOption
 	)
-
-:option2
-
-	if "%2"=="-c" (
-		set criticalFlag="true"
-		goto build
-	) else (
-		if "%2"=="-a" (
-			set builder="ant"
-			goto build
-		) else (
-			if "%2"=="" (
-				goto build
-			) else (
-				goto errorOption
-			)
-		)
-	)
+)
 
 :build
 	if %builder%=="ant" (

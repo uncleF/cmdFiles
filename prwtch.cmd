@@ -1,14 +1,11 @@
 @echo off
 
 if exist dev (
-	goto watch
+	grunt watch-project
+	goto exit
 ) else (
 	goto errorDirectory
 )
-
-:watch
-	grunt watch-project
-	goto exit
 
 :errorDirectory
 	echo Nothing To Watch

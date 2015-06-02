@@ -1,4 +1,4 @@
 @echo off
 
 %homeDirProjects%
-cd %dirProjectsApp%
+propn AppX

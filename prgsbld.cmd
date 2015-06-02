@@ -1,11 +1,11 @@
 @echo off
 
-set criticalFlag="false"
-set template="Base"
+set criticalFlag=false
+set template=Base
 
 :option1
 	if "%1"=="-c" (
-		set criticalFlag="true"
+		set criticalFlag=true
 		goto option2
 	) else (
 		if "%1"=="" (
@@ -25,7 +25,7 @@ set template="Base"
 	)
 
 :build
-	if %criticalFlag%=="true" (
+	if %criticalFlag%==true (
 		grunt build-critical --gruntfile template%template%\gruntfile.js --base .\ --gstemplate=template%template%
 	) else (
 		grunt build --gruntfile template%template%\gruntfile.js --base .\ --gstemplate=template%template%

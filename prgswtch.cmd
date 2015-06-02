@@ -1,28 +1,17 @@
 @echo off
 
-set template="Base"
+set template=Base
 
-:option1
-	if "%1"=="" (
-		goto check
-	) else (
-		set template=%1
-		goto check
-	)
+if NOT "%1"=="" (
+	set template=%1
+)
 
-:check
+:watch
 	if exist template%template%\dev (
-		goto watch
+		grunt watch-project --gruntfile template%template%\gruntfile.js --base .\ --gstemplate=template%template%
 	) else (
 		goto errorDirectory
 	)
-
-:watch
-	grunt watch-project --gruntfile template%template%\gruntfile.js --base .\ --gstemplate=template%template%
-	goto exit
-
-:errorOption
-	echo Invalid Parameters
 	goto exit
 
 :errorDirectory

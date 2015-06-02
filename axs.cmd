@@ -1,4 +1,4 @@
 @echo off
 
 %homeDirProjects%
-propn TemplateX
+propn AppX -s

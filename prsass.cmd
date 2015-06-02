@@ -1,32 +1,29 @@
 @echo off
 
-set compass="false"
+set compass=false
 
-if exist dev (
-	goto compassOption
+if "%1"=="-c" (
+	set compass=true
+	goto sass
 ) else (
-	goto errorDirectory
-)
-
-:compassOption
-	if "%1"=="-c" (
-		set compass="true"	
+	if "%1"=="" (
 		goto sass
 	) else (
-		if "%1"=="" (
-			goto sass
-		) else (
-			goto errorOption
-		)
+		goto errorOption
 	)
+)
 
 :sass
-	if %compass%=="true" (
-		sass --compass --sourcemap --style expanded --watch dev/res/sass-dev:dev/res/css-dev
+	if exist dev (
+		if "%compass%"=="true" (
+			sass --compass --sourcemap --style expanded --watch dev/res/sass-dev:dev/res/css-dev
+		) else (
+			sass --sourcemap --style expanded --watch dev/res/sass-dev:dev/res/css-dev
+		)
+		goto exit
 	) else (
-		sass --sourcemap --style expanded --watch dev/res/sass-dev:dev/res/css-dev
+		goto errorDirectory
 	)
-	goto exit
 
 :errorDirectory
 	echo Nothing To Watch

@@ -1,38 +1,72 @@
 @echo off
 
+set projectName=
+set packageName=
+set remoteFlag=false
+
 if "%1"=="" (
 	goto errorName
 ) else (
-	goto projectSetup
+	if "%1"=="-r" (
+		set remoteFlag=true
+		if NOT "%2"=="" (
+			set projectName=%2
+			set packageName=%3
+			goto projectSetup			
+		) else (
+			goto errorName
+		)
+	) else (
+		set projectName=%1
+		if "%2"=="-r" (
+			set remoteFlag=true
+		) else (
+			set packageName=%2
+			if "%3"=="-r" (
+				set remoteFlag=true
+			)
+		)
+		goto projectSetup
+	)
 )
 
 :projectSetup
-	echo Setting Up Project %1
+	echo Setting Up App Project %projectName%
 	%homeDirProjects%
 	cd %dirProjects%
-	md %1
-	cd %1
-	md dev
-	xcopy %dirProjectsApp%\dev dev /s /q /y
-	xcopy %dirProjectsApp%\gruntfile.js /q /y
-	xcopy %dirProjectsApp%\package.json /q /y
-	xcopy %dirProjectsApp%\backstop.json /q /y
-	xcopy %dirProjectsApp%\.*rc /q /y
-	xcopy %dirProjectsApp%/.editorconfig /q /y
-	xcopy %dirProjectsApp%\AppX.sublime-project .\%1.sublime-project /q /y
-	md meta
-	md design
-	md sources
+	if "%remoteFlag%"=="false" (
+		md %projectName%
+		cd %projectName%
+		md dev
+		md meta
+		md design
+		md sources
+		xcopy %dirProjectsApp%dev dev /s /q /y
+		copy %dirProjectsApp%gruntfile.js /y
+		copy %dirProjectsApp%package.json /y
+		copy %dirProjectsApp%backstop.json /y
+		copy %dirProjectsWeb%.*.yml /y
+		copy %dirProjectsApp%.*rc /y
+		copy %dirProjectsApp%.editorconfig /y
+		copy %dirProjectsApp%AppX.sublime-project .\%projectName%.sublime-project /q /y
+	) else (
+		git clone %remoteProjectApp% %projectName%
+		cd %projectName%
+		del /s /f /q *.md
+		rd .git /s /q
+		ren TemplateX.sublime-project %projectName%.sublime-project
+	)
 	del /s /f /q .DS_Store
 	cd dev
 	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d"
 	cd ..
-	replaceText gruntfile.js AppX %1
-	replaceText %1.sublime-project AppX %1
-	if "%2"=="" (
-		replaceText gruntfile.js appx %1
+	replaceText gruntfile.js AppX %projectName%
+	replaceText backstop.json AppX %projectName%
+	replaceText %projectName%.sublime-project AppX %projectName%
+	if "%packageName%"=="" (
+		replaceText gruntfile.js appx %projectName%
 	) else (
-		replaceText gruntfile.js appx %2
+		replaceText gruntfile.js appx %packageName%
 	)
 	goto npmQuestion
 

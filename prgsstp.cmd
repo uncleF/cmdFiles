@@ -7,15 +7,15 @@ if "%1"=="" (
 )
 
 :projectSetup
-	echo Setting Up Project %1
+	echo Setting Up Good-Seller Template Project %1
 	%homeDirProjects%
-	cd %dirProjects%\GoodSellerTemplates
+	cd %dirProjects%GoodSellerTemplates
 	md template%1
 	cd template%1
 	md dev
-	xcopy %dirProjects%\GoodSellerTemplates\templateBase\dev dev /s /q /y
-	xcopy %dirProjects%\GoodSellerTemplates\templateBase\gruntfile.js /q /y
-	xcopy %dirProjects%\GoodSellerTemplates\templateBase\GStemplate.sublime-project .\GStemplate%1.sublime-project /q /y
+	xcopy %dirProjects%GoodSellerTemplates\templateBase\dev dev /s /q /y
+	xcopy %dirProjects%GoodSellerTemplates\templateBase\gruntfile.js /q /y
+	xcopy %dirProjects%GoodSellerTemplates\templateBase\GStemplate.sublime-project .\GStemplate%1.sublime-project /q /y
 	md meta
 	md design
 	md sources
