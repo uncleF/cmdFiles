@@ -1,3 +1,5 @@
+::Setup Web Project
+
 @echo off
 
 if "%1"=="" (

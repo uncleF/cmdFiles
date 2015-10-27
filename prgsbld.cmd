@@ -8,21 +8,40 @@ set template=Base
 		set criticalFlag=true
 		goto option2
 	) else (
-		if "%1"=="" (
+		if NOT "%1"=="-t" (
 			goto build
 		) else (
-			set template=%1
-			goto build
+			if NOT "%2"=="" (
+				if NOT "%2"=="-c" (
+					set template=%2
+					goto option3
+				) else (
+					set criticalFlag=true
+					goto build
+				)
+			) else (
+				goto build
+			)
 		)
 	)
 
 :option2
-	if "%2"=="" (
+	if NOT "%2"=="-t" (
 		goto build
 	) else (
-		set template=%1
-		goto build
+		if NOT "%3"=="" (
+			set template=%3
+			goto build
+		) else (
+			goto build
+		)
 	)
+
+:option3
+	if "%3"=="-c" (
+		set criticalFlag=true
+	)
+	goto build
 
 :build
 	if %criticalFlag%==true (
