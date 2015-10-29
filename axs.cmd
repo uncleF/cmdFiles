@@ -1,4 +1,5 @@
+::Open AppX Project in Sublime Text
+
 @echo off
 
-%homeDirProjects%
 propn AppX -s

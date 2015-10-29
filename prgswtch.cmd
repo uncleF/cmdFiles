@@ -1,3 +1,5 @@
+::Watch Current Good-Seller Template Project with GruntJS watch-project Task
+
 @echo off
 
 set template=Base

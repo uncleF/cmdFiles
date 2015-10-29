@@ -1,3 +1,5 @@
+::Watch Current Project with GruntJS watch-project Task
+
 @echo off
 
 if exist dev (

@@ -1,3 +1,5 @@
+::Watch Current Project with Sass
+
 @echo off
 
 set compass=false

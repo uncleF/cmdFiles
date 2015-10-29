@@ -1,3 +1,5 @@
+::Build Current Good-Seller Template Project using GruntJS by Default or Apache ANT
+
 @echo off
 
 set criticalFlag=false
@@ -49,10 +51,6 @@ set template=Base
 	) else (
 		grunt build --gruntfile template%template%\gruntfile.js --base .\ --gstemplate=template%template%
 	)
-	goto exit
-
-:errorOption
-	echo Invalid Parameters
 	goto exit
 
 :exit

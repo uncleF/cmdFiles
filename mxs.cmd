@@ -1,4 +1,5 @@
+::Open MailX Project in Sublime Text
+
 @echo off
 
-%homeDirProjects%
 propn MailX -s

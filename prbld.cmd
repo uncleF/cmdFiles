@@ -1,3 +1,5 @@
+::Build Current Project using GruntJS by Default or Apache ANT
+
 @echo off
 
 set criticalFlag=false
@@ -5,11 +7,13 @@ set builder=grunt
 
 if "%1"=="-c" (
 	set criticalFlag=true
+	goto build
 ) else (
 	if "%1"=="-a" (
 		set builder=ant
+		goto build
 	) else (
-		goto errorOption
+		goto build
 	)
 )
 
@@ -24,12 +28,8 @@ if "%1"=="-c" (
 		)
 	)
 	cd build
-	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d"
+	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d" >nul 2>nul
 	cd ..
-	goto exit
-
-:errorOption
-	echo Invalid Parameters
 	goto exit
 
 :exit

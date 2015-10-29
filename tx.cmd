@@ -1,4 +1,5 @@
+::Open TemplateX Project
+
 @echo off
 
-%homeDirProjects%
 propn TemplateX

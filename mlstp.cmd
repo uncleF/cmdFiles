@@ -1,7 +1,10 @@
+::Setup Mail Project
+
 @echo off
 
 set projectName=
 set remoteFlag=false
+set gitFlag=true
 
 if "%1"=="" (
 	goto errorName
@@ -25,32 +28,41 @@ if "%1"=="" (
 
 :projectSetup
 	echo Setting Up Mail Template Project %projectName%
-	%homeDirProjects%
-	cd %dirProjects%
-	if "%remoteFlag%"=="false" (
-		md %1
-		cd %1
-		md dev
-		md design
-		md sources
-		xcopy %dirProjectsWeb%dev dev /s /q /y
-		copy %dirProjectsMail%gruntfile.js /y
-		copy %dirProjectsMail%package.json /y
-		copy %dirProjectsMail%backstop.json /y
-		copy %dirProjectsWeb%.*.yml /y
-		copy %dirProjectsMail%.*rc /y
-		copy %dirProjectsMail%.editorconfig /y
-		copy %dirProjectsMail%MailX.sublime-project .\%projectName%.sublime-project /y
-	) else (
-		git clone %remoteProjectMail% %projectName%
-		cd %projectName%
-		del /s /f /q *.md
-		rd .git /s /q
-		ren TemplateX.sublime-project %projectName%.sublime-project
+	where git >nul 2>nul
+	if "%errorlevel%"=="1" (
+		set gitFlag=false
 	)
-	del /s /f /q .DS_Store
+	call propn
+	if "%remoteFlag%"=="false" (
+		md %projectName%
+		cd %projectName%
+		md dev
+		xcopy %dirProjectMail%\dev .\dev /s /q /y >nul 2>nul
+		copy %dirProjectMail%\gruntfile.js /y >nul 2>nul
+		copy %dirProjectMail%\package.json /y >nul 2>nul
+		copy %dirProjectMail%\backstop.json /y >nul 2>nul
+		copy %dirProjectMail%\.*.yml /y >nul 2>nul
+		copy %dirProjectMail%\.*rc /y >nul 2>nul
+		copy %dirProjectMail%\.editorconfig /y >nul 2>nul
+		copy %dirProjectMail%\.gitattributes /y >nul 2>nul
+		copy %dirProjectMail%\.gitignore /y >nul 2>nul
+		copy %dirProjectMail%\MailX.sublime-project .\%projectName%.sublime-project /y >nul 2>nul
+	) else (
+		if "%gitFlag%"=="false" (
+			goto errorGit
+		) else (
+			git clone %remoteProjectMail% %projectName%
+			cd %projectName%
+			rd .git /s /q
+			del .\*.md /s /f /q >nul 2>nul
+			ren MailX.sublime-project %projectName%.sublime-project
+		)
+	)
+	md design
+	md sources
+	del .\.DS_Store /s /f /q >nul 2>nul
 	cd dev
-	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d"
+	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d" >nul 2>nul
 	cd ..
 	replaceText gruntfile.js MailX %projectName%
 	replaceText backstop.json MailX %projectName%
@@ -81,5 +93,9 @@ if "%1"=="" (
 :errorAnswer
 	echo Please Answer (y)es or (n)o
 	goto npmQuestion
+
+:errorGit
+	echo Git is not available
+	goto exit
 
 :exit

@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"git",
+				"gitFlag"
+			],
+			[
+				"project",
+				"projectSetup"
+			],
+			[
 				"GetCom",
 				"GetComponent	GameObject.*<T>()"
 			]
@@ -89,10 +97,30 @@
 	],
 	"file_history":
 	[
+		"/D/Projects/Projects/cmdFiles/prgswtch.cmd",
 		"/D/Projects/Projects/cmdFiles/prgsstp.cmd",
 		"/D/Projects/Projects/cmdFiles/prgsbld.cmd",
+		"/D/Projects/Projects/cmdFiles/prstp.cmd",
 		"/D/Projects/Projects/cmdFiles/prbld.cmd",
 		"/D/Projects/Projects/cmdFiles/propn.cmd",
+		"/D/Projects/Projects/cmdFiles/prsass.cmd",
+		"/D/Projects/Projects/cmdFiles/prwtch.cmd",
+		"/D/Projects/Projects/cmdFiles/tmp.cmd",
+		"/D/Projects/Projects/cmdFiles/tx.cmd",
+		"/D/Projects/Projects/cmdFiles/txs.cmd",
+		"/D/Projects/Projects/cmdFiles/mxs.cmd",
+		"/D/Projects/Projects/cmdFiles/mx.cmd",
+		"/D/Projects/Projects/cmdFiles/mlstp.cmd",
+		"/D/Projects/Projects/cmdFiles/axs.cmd",
+		"/D/Projects/Projects/cmdFiles/ax.cmd",
+		"/D/Projects/Projects/cmdFiles/apstp.cmd",
+		"/D/Projects/Projects/cmdFiles/cmd.lnk",
+		"/D/Projects/Projects/Boobies/package.json",
+		"/D/Projects/Projects/Boobies/meta/manifest.webapp",
+		"/D/Projects/Projects/cmdFiles/test.cmd",
+		"/D/Projects/Projects/cmdFiles/testo.cmd",
+		"/D/Projects/Projects/cmdFiles/init.bat",
+		"/C/Program Files (x86)/cmder/vendor/init.bat",
 		"/D/Projects/Projects/cmdFiles/environment.cmd",
 		"/D/Projects/Projects/dotfiles/.aliases",
 		"/D/Projects/Projects/antBuild.properties-old",
@@ -113,11 +141,11 @@
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 92.0,
 		"where_history":
 		[
 		]
@@ -127,6 +155,13 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"errorOption",
+			"gitErr",
+			"Web",
+			"Templa",
+			"del",
+			"lam",
+			"dirProjectsWeb",
 			"dirCmd"
 		],
 		"highlight": true,
@@ -135,6 +170,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"dirProjectWeb"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -189,7 +225,7 @@
 	"project": "cmdFiles.sublime-project",
 	"replace":
 	{
-		"height": 46.0
+		"height": 64.0
 	},
 	"save_all_on_build": true,
 	"select_file":

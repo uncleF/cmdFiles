@@ -1,3 +1,5 @@
+::Open Project
+
 @echo off
 
 %homeDirProjects%

@@ -1,4 +1,5 @@
+::Open TemplateX Project in Sublime Text
+
 @echo off
 
-%homeDirProjects%
 propn TemplateX -s

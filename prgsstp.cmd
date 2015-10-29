@@ -1,32 +1,35 @@
-::Setup Web Project
+::Setup Good-Seller Template Project
 
 @echo off
+
+set template=
 
 if "%1"=="" (
 	goto errorName
 ) else (
+	template=%1
 	goto projectSetup
 )
 
 :projectSetup
-	echo Setting Up Good-Seller Template Project %1
-	%homeDirProjects%
-	cd %dirProjects%GoodSellerTemplates
-	md template%1
-	cd template%1
+	echo Setting Up Good-Seller Template Project %template%
+	call propn
+	cd GoodSellerTemplates
+	md template%template%
+	cd template%template%
 	md dev
-	xcopy %dirProjects%GoodSellerTemplates\templateBase\dev dev /s /q /y
-	xcopy %dirProjects%GoodSellerTemplates\templateBase\gruntfile.js /q /y
-	xcopy %dirProjects%GoodSellerTemplates\templateBase\GStemplate.sublime-project .\GStemplate%1.sublime-project /q /y
-	md meta
+	xcopy %dirProjects%\GoodSellerTemplates\templateBase\dev dev /s /q /y >nul 2>nul
+	copy %dirProjects%\GoodSellerTemplates\templateBase\gruntfile.js /q /y >nul 2>nul
+	copy %dirProjects%\GoodSellerTemplates\templateBase\GStemplate.sublime-project .\GStemplate%template%.sublime-project /q /y >nul 2>nul
 	md design
 	md sources
-	del /s /f /q .DS_Store
+	md meta
+	del .DS_Store /s /f /q >nul 2>nul
 	cd dev
-	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d"
+	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d" >nul 2>nul
 	cd ..
-	replaceText gruntfile.js GoodSellerTemplates GoodSellerTemplate%1
-	replaceText GStemplate%1.sublime-project GoodSellerTemplates GoodSellerTemplate%1
+	replaceText gruntfile.js GoodSellerTemplates GoodSellerTemplate%template%
+	replaceText GStemplate%template%.sublime-project GoodSellerTemplates GoodSellerTemplate%template%
 	cd ..
 	goto exit
 

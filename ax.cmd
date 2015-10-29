@@ -1,4 +1,5 @@
+::Open AppX Project
+
 @echo off
 
-%homeDirProjects%
 propn AppX

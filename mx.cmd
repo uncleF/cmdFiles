@@ -1,4 +1,5 @@
+::Open MailX Project
+
 @echo off
 
-%homeDirProjects%
 propn MailX
