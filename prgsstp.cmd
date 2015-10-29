@@ -18,7 +18,7 @@ if "%1"=="" (
 	md template%template%
 	cd template%template%
 	md dev
-	xcopy %dirProjects%\GoodSellerTemplates\templateBase\dev dev /s /q /y >nul 2>nul
+	xcopy %dirProjects%\GoodSellerTemplates\templateBase\dev .\dev /s /q /y >nul 2>nul
 	copy %dirProjects%\GoodSellerTemplates\templateBase\gruntfile.js /q /y >nul 2>nul
 	copy %dirProjects%\GoodSellerTemplates\templateBase\GStemplate.sublime-project .\GStemplate%template%.sublime-project /q /y >nul 2>nul
 	md design

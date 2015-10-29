@@ -4,8 +4,7 @@
 		{
 			"file_exclude_patterns":
 			[
-				"*.sublime-project",
-				".gitignore"
+				"*.sublime-project"
 			],
 			"follow_symlinks": true,
 			"name": "cmdfiles",

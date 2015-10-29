@@ -83,7 +83,7 @@ if "%1"=="" (
 			rd .git /s /q >nul 2>nul
 			rd meta /s /q >nul 2>nul
 			del .\*.md /s /f /q >nul 2>nul
-			ren TemplateX.sublime-project %projectName%.sublime-project >nul 2>nul
+			ren .\TemplateX.sublime-project .\%projectName%.sublime-project >nul 2>nul
 		)
 	)
 	md design

@@ -55,12 +55,12 @@ if "%1"=="" (
 			cd %projectName%
 			rd .git /s /q
 			del .\*.md /s /f /q >nul 2>nul
-			ren MailX.sublime-project %projectName%.sublime-project
+			ren .\MailX.sublime-project .\%projectName%.sublime-project
 		)
 	)
 	md design
 	md sources
-	del .\.DS_Store /s /f /q >nul 2>nul
+	del .DS_Store /s /f /q >nul 2>nul
 	cd dev
 	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d" >nul 2>nul
 	cd ..

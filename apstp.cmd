@@ -64,12 +64,12 @@ if "%1"=="" (
 			cd %projectName%
 			rd .git /s /q >nul 2>nul
 			del .\*.md /s /f /q >nul 2>nul
-			ren AppX.sublime-project %projectName%.sublime-project >nul 2>nul
+			ren .\AppX.sublime-project .\%projectName%.sublime-project >nul 2>nul
 		)
 	)
 	md design
 	md sources
-	del .\.DS_Store /s /f /q >nul 2>nul
+	del .DS_Store /s /f /q >nul 2>nul
 	cd dev
 	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d" >nul 2>nul
 	cd ..
@@ -116,6 +116,7 @@ if "%1"=="" (
 		set packageName=%packageName:Z=z%	
 	)
 	replaceText gruntfile.js appx %packageName%
+	replaceText package.json appx %packageName%
 	goto npmQuestion
 
 :npmQuestion
