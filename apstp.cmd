@@ -49,6 +49,7 @@ if "%1"=="" (
 		xcopy %dirProjectApp%\meta .\meta /s /q /y >nul 2>nul
 		copy %dirProjectApp%\gruntfile.js /y >nul 2>nul
 		copy %dirProjectApp%\package.json /y >nul 2>nul
+		copy %dirProjectApp%\bower.json /y >nul 2>nul
 		copy %dirProjectApp%\backstop.json /y >nul 2>nul
 		copy %dirProjectApp%\.*.yml /y >nul 2>nul
 		copy %dirProjectApp%\.*rc /y >nul 2>nul
@@ -117,6 +118,7 @@ if "%1"=="" (
 	)
 	replaceText gruntfile.js appx %packageName%
 	replaceText package.json appx %packageName%
+	replaceText bower.json appx %packageName%
 	goto npmQuestion
 
 :npmQuestion
