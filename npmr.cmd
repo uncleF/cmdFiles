@@ -4,4 +4,4 @@
 
 rd ./node_modules /s /q >nul 2>nul
 npm cache clear
-npm i
+npm i --save-dev
