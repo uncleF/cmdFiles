@@ -136,7 +136,7 @@ if "%1"=="" (
 
 :npmInstall
 	npm cache clear
-	npm i
+	npm i --save-dev
 	goto exit
 
 :errorName

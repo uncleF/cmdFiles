@@ -83,7 +83,8 @@ if "%1"=="" (
 	)
 
 :npmInstall
-	npm install
+	npm cache clear
+	npm i --save-dev
 	goto exit
 
 :errorName
