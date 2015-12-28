@@ -67,7 +67,6 @@ if "%1"=="" (
 		xcopy %dirProjectWeb%\dev dev /s /q /y >nul 2>nul
 		copy %dirProjectWeb%\gruntfile.js /y >nul 2>nul
 		copy %dirProjectWeb%\package.json /y >nul 2>nul
-		copy %dirProjectWeb%\bower.json /y >nul 2>nul
 		copy %dirProjectWeb%\backstop.json /y >nul 2>nul
 		copy %dirProjectWeb%\.*.yml /y >nul 2>nul
 		copy %dirProjectWeb%\.*rc /y >nul 2>nul
@@ -99,7 +98,6 @@ if "%1"=="" (
 	replaceText backstop.json TemplateX %projectName%
 	replaceText %projectName%.sublime-project TemplateX %projectName%
 	replaceText package.json templatex %packageName%
-	replaceText bower.json templatex %packageName%
 	goto npmQuestion
 
 :npmQuestion
