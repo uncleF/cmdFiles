@@ -34,36 +34,17 @@ if "%1"=="" (
 	)
 	call propn
 	if "%remoteFlag%"=="false" (
-		md %projectName%
-		cd %projectName%
-		md dev
-		xcopy %dirProjectMail%\dev .\dev /s /q /y >nul 2>nul
-		copy %dirProjectMail%\gruntfile.js /y >nul 2>nul
-		copy %dirProjectMail%\package.json /y >nul 2>nul
-		copy %dirProjectMail%\backstop.json /y >nul 2>nul
-		copy %dirProjectMail%\.*.yml /y >nul 2>nul
-		copy %dirProjectMail%\.*rc /y >nul 2>nul
-		copy %dirProjectMail%\.editorconfig /y >nul 2>nul
-		copy %dirProjectMail%\.gitattributes /y >nul 2>nul
-		copy %dirProjectMail%\.gitignore /y >nul 2>nul
-		copy %dirProjectMail%\MailX.sublime-project .\%projectName%.sublime-project /y >nul 2>nul
+		call uprcopy %projectName% %dirProjectMail% MailX
 	) else (
 		if "%gitFlag%"=="false" (
 			goto errorGit
 		) else (
-			git clone %remoteProjectMail% %projectName%
-			cd %projectName%
-			rd .git /s /q
-			del .\*.md /s /f /q >nul 2>nul
-			ren .\MailX.sublime-project .\%projectName%.sublime-project
+			call uprremote %projectName% %remoteProjectMail% MailX
 		)
 	)
+	call uprcleanup
 	md design
 	md sources
-	del .DS_Store /s /f /q >nul 2>nul
-	cd dev
-	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d" >nul 2>nul
-	cd ..
 	replaceText gruntfile.js MailX %projectName%
 	replaceText backstop.json MailX %projectName%
 	replaceText %projectName%.sublime-project MailX %projectName%

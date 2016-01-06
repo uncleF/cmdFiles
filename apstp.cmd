@@ -41,38 +41,18 @@ if "%1"=="" (
 	)
 	call propn
 	if "%remoteFlag%"=="false" (
-		md %projectName%
-		cd %projectName%
-		md dev
-		xcopy %dirProjectApp%\dev .\dev /s /q /y >nul 2>nul
+		call uprcopy %projectName% %dirProjectApp% AppX
 		md meta
-		xcopy %dirProjectApp%\meta .\meta /s /q /y >nul 2>nul
-		copy %dirProjectApp%\gruntfile.js /y >nul 2>nul
-		copy %dirProjectApp%\package.json /y >nul 2>nul
-		copy %dirProjectApp%\backstop.json /y >nul 2>nul
-		copy %dirProjectApp%\.*.yml /y >nul 2>nul
-		copy %dirProjectApp%\.*rc /y >nul 2>nul
-		copy %dirProjectApp%\.editorconfig /y >nul 2>nul
-		copy %dirProjectApp%\.gitattributes /y >nul 2>nul
-		copy %dirProjectApp%\.gitignore /y >nul 2>nul
-		copy %dirProjectApp%\AppX.sublime-project .\%projectName%.sublime-project /y >nul 2>nul
 	) else (
 		if "%gitFlag%"=="false" (
 			goto errorGit
 		) else (
-			git clone %remoteProjectApp% %projectName%
-			cd %projectName%
-			rd .git /s /q >nul 2>nul
-			del .\*.md /s /f /q >nul 2>nul
-			ren .\AppX.sublime-project .\%projectName%.sublime-project >nul 2>nul
+			call uprremote %projectName% %remoteProjectApp% AppX
 		)
 	)
+	call uprcleanup
 	md design
 	md sources
-	del .DS_Store /s /f /q >nul 2>nul
-	cd dev
-	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d" >nul 2>nul
-	cd ..
 	cd meta
 	del .\*.ico /s /f /q >nul 2>nul
 	del .\*.jpg /s /f /q >nul 2>nul
@@ -82,10 +62,6 @@ if "%1"=="" (
 	del .\*.svg /s /f /q >nul 2>nul
 	del .\*.txt /s /f /q >nul 2>nul
 	cd ..
-	replaceText gruntfile.js AppX %projectName%
-	replaceText package.json AppX %projectName%
-	replaceText backstop.json AppX %projectName%
-	replaceText %projectName%.sublime-project AppX %projectName%
 	if "%packageName%"=="" (
 		set packageName=%projectName%
 		set packageName=%packageName:A=a%
@@ -115,8 +91,8 @@ if "%1"=="" (
 		set packageName=%packageName:Y=y%
 		set packageName=%packageName:Z=z%	
 	)
+	call uprreplace %projectName% AppX %packageName% appx
 	replaceText gruntfile.js appx %packageName%
-	replaceText package.json appx %packageName%
 	goto npmQuestion
 
 :npmQuestion

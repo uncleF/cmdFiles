@@ -61,43 +61,20 @@ if "%1"=="" (
 	set packageName=%packageName:Z=z%
 	call propn
 	if "%remoteFlag%"=="false" (
-		md %projectName%
-		cd %projectName%
-		md dev
-		xcopy %dirProjectWeb%\dev dev /s /q /y >nul 2>nul
-		copy %dirProjectWeb%\gruntfile.js /y >nul 2>nul
-		copy %dirProjectWeb%\package.json /y >nul 2>nul
-		copy %dirProjectWeb%\backstop.json /y >nul 2>nul
-		copy %dirProjectWeb%\.*.yml /y >nul 2>nul
-		copy %dirProjectWeb%\.*rc /y >nul 2>nul
-		copy %dirProjectWeb%\.editorconfig /y >nul 2>nul
-		copy %dirProjectWeb%\.gitattributes /y >nul 2>nul
-		copy %dirProjectWeb%\.gitignore /y >nul 2>nul
-		copy %dirProjectWeb%\TemplateX.sublime-project .\%projectName%.sublime-project /y >nul 2>nul
+		call uprcopy %projectName% %dirProjectWeb% TemplateX
 	) else (
 		if "%gitFlag%"=="false" (
 			goto errorGit
 		) else (
-			git clone %remoteProjectWeb% %projectName%
-			cd %projectName%
-			rd .git /s /q >nul 2>nul
+			call uprremote %projectName% %remoteProjectWeb% TemplateX
 			rd meta /s /q >nul 2>nul
-			del .\*.md /s /f /q >nul 2>nul
-			ren .\TemplateX.sublime-project .\%projectName%.sublime-project >nul 2>nul
 		)
 	)
+	call uprcleanup
 	md design
 	md sources
 	md meta
-	del .DS_Store /s /f /q >nul 2>nul
-	cd dev
-	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d" >nul 2>nul
-	cd ..
-	replaceText gruntfile.js TemplateX %projectName%
-	replaceText package.json TemplateX %projectName%
-	replaceText backstop.json TemplateX %projectName%
-	replaceText %projectName%.sublime-project TemplateX %projectName%
-	replaceText package.json templatex %packageName%
+	call uprreplace %projectName% TemplateX %packageName% templatex
 	goto npmQuestion
 
 :npmQuestion
