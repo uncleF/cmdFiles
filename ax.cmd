@@ -1,4 +1,4 @@
-::Open AppX Project
+:: Open AppX Project
 
 @echo off
 

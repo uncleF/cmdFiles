@@ -1,4 +1,4 @@
-::Open AppX Project
+:: Open TemplateX Patterns Project
 
 @echo off
 

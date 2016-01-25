@@ -1,4 +1,4 @@
-::Open Temp
+:: Open Temp
 
 @echo off
 

@@ -1,4 +1,4 @@
-::Open AppX Project in Sublime Text
+:: Open AppX Project in Sublime Text
 
 @echo off
 

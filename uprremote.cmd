@@ -1,4 +1,4 @@
-::Remote
+:: Clone Remote Utility
 
 @echo off
 

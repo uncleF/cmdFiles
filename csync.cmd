@@ -1,4 +1,4 @@
-::Copy .cmd-files to the Tools Directory
+:: Copy .cmd-files to the Tools Directory
 
 @echo off
 

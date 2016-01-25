@@ -1,4 +1,4 @@
-::Setup Web Project
+:: Setup Web Project
 
 @echo off
 

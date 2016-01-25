@@ -1,4 +1,4 @@
-::Cleanup
+:: Cleanup Utility
 
 @echo off
 

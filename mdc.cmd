@@ -1,4 +1,4 @@
-::Create New Directory and Enter It
+:: Create New Directory and Enter It
 
 @echo off
 

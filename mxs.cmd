@@ -1,4 +1,4 @@
-::Open MailX Project in Sublime Text
+:: Open MailX Project in Sublime Text
 
 @echo off
 

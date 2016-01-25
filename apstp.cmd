@@ -1,4 +1,4 @@
-::Setup App Project
+:: Setup App Project
 
 @echo off
 

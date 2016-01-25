@@ -1,4 +1,4 @@
-::Check Remote Repos
+:: Check Remote Repos
 
 @echo off
 

@@ -1,4 +1,4 @@
-::Open TemplateX Project
+:: Open TemplateX Project
 
 @echo off
 

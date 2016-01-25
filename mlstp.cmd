@@ -1,4 +1,4 @@
-::Setup Mail Project
+:: Setup Mail Project
 
 @echo off
 

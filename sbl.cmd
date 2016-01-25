@@ -1,4 +1,4 @@
-::Open Current Project in Sublime Text
+:: Open Current Project in Sublime Text
 
 @echo off
 

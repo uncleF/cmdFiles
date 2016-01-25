@@ -1,4 +1,4 @@
-::Open MailX Project
+:: Open MailX Project
 
 @echo off
 

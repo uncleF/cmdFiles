@@ -1,4 +1,4 @@
-::Open TemplateX Project in Sublime Text
+:: Open TemplateX Project in Sublime Text
 
 @echo off
 

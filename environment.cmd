@@ -1,4 +1,4 @@
-::Environment Variables
+:: Environment Variables
 setx homeDirProjects D: >nul 2>nul
 setx dirProjects %homeDirProjects%\Projects\Projects >nul 2>nul
 setx dirCmdTools %homeDirProjects%\Projects\Tools\cmdTools >nul 2>nul
@@ -14,7 +14,7 @@ setx remoteProjectMail %remoteHome%/MailX.git >nul 2>nul
 setx buildProperties %dirProjects%\antBuild.properties >nul 2>nul
 setx buildJSON %dirProjects%\gruntBuild.json >nul 2>nul
 
-::Setting Up CLI
+:: Setting Up CLI
 rmdir %dirCmdTools% >nul 2>nul
 mkdir %dirCmdTools% >nul 2>nul
 xcopy %dirProjectCmd%\*.cmd %dirCmdTools%\ /EXCLUDE:exclude.txt /y >nul 2>nul

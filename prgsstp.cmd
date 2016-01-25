@@ -1,4 +1,4 @@
-::Setup Good-Seller Template Project
+:: Setup Good-Seller Template Project
 
 @echo off
 

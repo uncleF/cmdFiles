@@ -1,4 +1,4 @@
-::Build Current Good-Seller Template Project using GruntJS by Default or Apache ANT
+:: Build Current Good-Seller Template Project using GruntJS by Default or Apache ANT
 
 @echo off
 

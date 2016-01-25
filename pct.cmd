@@ -1,4 +1,4 @@
-::Commit and Push Project Changes
+:: Commit and Push Project Changes
 
 @echo off
 

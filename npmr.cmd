@@ -1,4 +1,4 @@
-::Reinstall Node Modules
+:: Reinstall Node Modules
 
 @echo off
 

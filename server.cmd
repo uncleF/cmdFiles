@@ -1,4 +1,4 @@
-::Start Local HTTP Server and Serve Current Project (/build Directory By Default or Some Other if Specified)
+:: Start Local HTTP Server and Serve Current Project (/build Directory By Default or Some Other if Specified)
 
 @echo off
 

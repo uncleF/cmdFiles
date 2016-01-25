@@ -1,4 +1,4 @@
-::Watch Current Project with Sass
+:: Watch Current Project with Sass
 
 @echo off
 

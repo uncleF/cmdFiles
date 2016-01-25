@@ -1,4 +1,4 @@
-::Open Project
+:: Open Project
 
 @echo off
 

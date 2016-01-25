@@ -1,4 +1,4 @@
-::Open Current Directory in the Windows Explorer
+:: Open Current Directory in the Windows Explorer
 
 @echo off
 
