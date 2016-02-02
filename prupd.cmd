@@ -2,14 +2,22 @@
 
 @echo off
 
-set directory=build
-set port=8000
+set project=%dirProjectWeb%
+
+if "%1"=="-a" (
+	set project=%dirProjectApp%
+	goto update
+)
+if "%1"=="-m" (
+	set project=%dirProjectMail%
+	goto update
+)
 
 :update
 	if exist dev (
-		copy %dirProjectWeb%\.*rc /y >nul 2>nul
-		copy %dirProjectWeb%\.*.yml /y >nul 2>nul
-		copy %dirProjectWeb%\.editorconfig /y >nul 2>nul
+		copy %project%\.*rc /y >nul 2>nul
+		copy %project%\.*.yml /y >nul 2>nul
+		copy %project%\.editorconfig /y >nul 2>nul
 	) else (
 		echo "This is Not a Project Root"
 	)
