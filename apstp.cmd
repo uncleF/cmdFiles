@@ -11,11 +11,11 @@ set remoteFlag=false
 	if [%1]==[] (
 		goto projectSetup
 	)
-	if %1==-r (
+	if [%1]==[-r] (
 		set remoteFlag=true
 	) else (
 		set projectName=%1
-		if NOT [%2]==[] if NOT %2==-r (
+		if NOT [%2]==[] if NOT [%2]==[-r] (
 			set packageName=%2
 			shift
 		)

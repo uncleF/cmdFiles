@@ -10,7 +10,7 @@ set gitFlag=true
 	if [%1]==[] (
 		goto projectSetup
 	)
-	if %1==-r (
+	if [%1]==[-r] (
 		set remoteFlag=true
 	) else (
 		set projectName=%1

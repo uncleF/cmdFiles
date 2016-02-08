@@ -3,17 +3,17 @@
 @echo off
 
 set directory=%dirProjects%
-set projectName=
+set project=
 set sublime=false
 
 :options
 	if [%1]==[] (
 		goto open
 	)
-	if %1==-s (
+	if [%1]==[-s] (
 		set sublime=true
 	) else (
-		set projectName=%1
+		set project=%1
 		set directory=%dirProjects%\%1
 	)
 	shift
@@ -23,5 +23,5 @@ set sublime=false
 	%homeDirProjects%
 	cd %directory%
 	if %sublime%==true (
-		subl --project %projectName%.sublime-project
+		subl --project %project%.sublime-project
 	)

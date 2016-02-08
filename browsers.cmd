@@ -19,13 +19,13 @@ set nextPath="C:\Program Files (x86)\Opera beta\launcher.exe"
 	if [%1]==[] (
 		goto startBrowsers
 	)
-	if %1==-n (
+	if [%1]==[-n] (
 		set nightlyFlag=true
 	)
-	if %1==-e (
+	if [%1]==[-e] (
 		set emptyFlag=true
 	)
-	if %1==-u if NOT [%2]==[] if NOT %2==-n if NOT %2==-e (
+	if [%1]==[-u] if NOT [%2]==[] if NOT [%2]==[-n] if NOT [%2]==[-e] (
 		set url=%2
 		shift
 	)

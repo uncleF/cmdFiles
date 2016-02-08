@@ -5,7 +5,7 @@
 set compass=false
 
 :options
-	if %1==-c (
+	if [%1]==[-c] (
 		set compass=true
 	)
 	goto sass

@@ -10,15 +10,15 @@ set legacy=false
 	if [%1]==[] (
 		goto build
 	)
-	if %1==-a (
+	if [%1]==[-a] (
 		set builder=ant
 		set legacy=true
 		goto build
 	)
-	if %1==-c (
+	if [%1]==[-c] (
 		set criticalFlag=true
 	)
-	if %1==-l (
+	if [%1]==[-l] (
 		set legacy=true
 	)
 	shift

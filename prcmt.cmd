@@ -9,11 +9,11 @@ set remote=origin
 	if [%1]==[] (
 		goto commit
 	)
-	if %1==-m if NOT [%2]==[] if NOT %2==-r (
+	if [%1]==[-m] if NOT [%2]==[] if NOT [%2]==[-r] (
 		set message=%2
 		shift
 	)
-	if %1==-r if NOT [%2]==[] if NOT %2==-m (
+	if [%1]==[-r] if NOT [%2]==[] if NOT [%2]==[-m] (
 		set remote=%2
 		shift
 	)
