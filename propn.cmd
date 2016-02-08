@@ -7,7 +7,7 @@ set projectName=
 set sublime=false
 
 :options
-	if %1== (
+	if %1=="" (
 		goto open
 	)
 	if %1==-s (
