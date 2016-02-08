@@ -2,21 +2,26 @@
 
 @echo off
 
-%homeDirProjects%
-if NOT "%1"=="" (
-	if "%1"=="-s" (
-		if NOT "%2"=="" (
-			cd %dirProjects%\%2
-			subl --project %2.sublime-project
-		) else (
-			cd %dirProjects%
-		)
-	) else (
-		cd %dirProjects%\%1
-		if "%2"=="-s" (
-			subl --project %1.sublime-project
-		)
+set directory=%dirProjects%
+set projectName=
+set sublime=false
+
+:options
+	if [%1]==[] (
+		goto open
 	)
-) else (
-	cd %dirProjects%
-)
+	if %1==-s (
+		set sublime=true
+	) else (
+		projectName=%1
+		directory=%dirProjects%\%1
+	)
+	shift
+	goto options
+
+:open
+	%homeDirProjects%
+	cd %directory%
+	if %sublime%==true (
+		subl --project %projectName.sublime-project
+	)

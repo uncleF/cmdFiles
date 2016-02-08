@@ -1,4 +1,4 @@
-:: Setup App Project
+::Setup App Project
 
 @echo off
 
@@ -7,44 +7,37 @@ set packageName=
 set remoteFlag=false
 set gitFlag=true
 
-if "%1"=="" (
-	goto errorName
-) else (
-	if "%1"=="-r" (
-		set remoteFlag=true
-		if NOT "%2"=="" (
-			set projectName=%2
-			set packageName=%3
-			goto projectSetup			
-		) else (
-			goto errorName
-		)
-	) else (
-		set projectName=%1
-		if "%2"=="-r" (
-			set remoteFlag=true
-		) else (
-			set packageName=%2
-			if "%3"=="-r" (
-				set remoteFlag=true
-			)
-		)
+:options
+	if [%1]==[] (
 		goto projectSetup
 	)
-)
+	if [%1]==[-r] (
+		set remoteFlag=true
+	) else (
+		set projectName=%1
+		if NOT [%2]==[] if NOT [%2]==[-r] (
+			set packageName=%2
+			shift
+		)
+	)
+	shift
+	goto options
 
 :projectSetup
+	if [%projectName%]==[] (
+		goto errorName
+	)
 	echo Setting Up App Project %projectName%
 	where git >nul 2>nul
-	if "%errorlevel%"=="1" (
+	if [%errorlevel%]==[1] (
 		set gitFlag=false
 	)
 	call propn
-	if "%remoteFlag%"=="false" (
+	if [%remoteFlag%]==[false] (
 		call uprcopy %projectName% %dirProjectApp% AppX
 		md meta
 	) else (
-		if "%gitFlag%"=="false" (
+		if [%gitFlag%]==[false] (
 			goto errorGit
 		) else (
 			call uprremote %projectName% %remoteProjectApp% AppX
@@ -62,7 +55,7 @@ if "%1"=="" (
 	del .\*.svg /s /f /q >nul 2>nul
 	del .\*.txt /s /f /q >nul 2>nul
 	cd ..
-	if "%packageName%"=="" (
+	if [%packageName%]==[] (
 		set packageName=%projectName%
 		set packageName=%packageName:A=a%
 		set packageName=%packageName:B=b%

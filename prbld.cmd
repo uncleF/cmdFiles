@@ -6,30 +6,23 @@ set builder=grunt
 set criticalFlag=false
 set legacy=false
 
-if "%1"=="-a" (
-	set builder=ant
-	set legacy=true
-	goto build
-)
-if "%2"=="-a" (
-	set builder=ant
-	set legacy=true
-	goto build
-)
-if "%1"=="-c" (
-	set criticalFlag=true
-	if "%2"=="-l" (
-		set legacy=true
+:options
+	if [%1]==[] (
+		goto projectSetup
 	)
-	goto build
-)
-if "%1"=="-l" (
-	set legacy=true
-	if "%2"=="-c" (
+	if [%1]==[-a] (
+		set builder=ant
+		set legacy=true
+		goto build
+	)
+	if [%1]==[-c] (
 		set criticalFlag=true
 	)
-	goto build
-)
+	if [%1]==[-l] (
+		set legacy=true
+	)
+	shift
+	goto options
 
 :build
 	if %builder%=="ant" (

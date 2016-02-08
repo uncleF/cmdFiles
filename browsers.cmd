@@ -1,4 +1,4 @@
-:: Start All Browsers (Current Stable Releases or Nightly Builds) With an Empty Tab or Go To Specified URL (http://localhost:8000 by Default)
+::Start All Browsers (Current Stable Releases or Nightly Builds) With an Empty Tab or Go To Specified URL (http://localhost:8000 by Default)
 
 @echo off
 
@@ -18,38 +18,21 @@ set nightlyPath="C:\Program Files\Nightly\firefox.exe"
 :options
 	if [%1]==[] (
 		goto startBrowsers
-	) else (
-		if [%1]==[-n] (
-			set nightlyFlag=true
+	)
+	if [%1]==[-n] (
+		set nightlyFlag=true
+	)
+	if [%1]==[-e] (
+		set emptyFlag=true
+	)
+	if [%1]==[-u] (
+		if NOT [%2]==[] if NOT [%2]==[-n] if NOT [%2]==[-e] (
+			set url=%2
 			shift
-			goto options
-		)
-		if [%1]==[-e] (
-			set emptyFlag=true
-			shift
-			goto options
-		)
-		if [%1]==[-u] (
-			if NOT [%2]==[] if NOT [%2]==[-n] if NOT [%2]==[-e] (
-				set url=%2
-				shift
-				shift
-				goto options
-			) else (
-				if [%2]==[-n] (
-					shift
-					goto options
-				) else (
-					if [%2]==[-e] (
-						shift
-						goto options
-					) else (
-						goto startBrowsers
-					)
-				)
-			)
 		)
 	)
+	shift
+	goto options
 
 :startBrowsers
 	if "%emptyFlag%"=="true" (

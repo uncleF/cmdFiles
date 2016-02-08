@@ -1,4 +1,4 @@
-:: Setup Web Project
+::Setup Web Project
 
 @echo off
 
@@ -6,30 +6,25 @@ set projectName=
 set remoteFlag=false
 set gitFlag=true
 
-if "%1"=="" (
-	goto errorName
-) else (
-	if "%1"=="-r" (
-		set remoteFlag=true
-		if NOT "%2"=="" (
-			set projectName=%2
-			goto projectSetup
-		) else (
-			goto errorName
-		)
-	) else (
-		set projectName=%1
-		if "%2"=="-r" (
-			set remoteFlag=true
-		)
+:options
+	if [%1]==[] (
 		goto projectSetup
 	)
-)
+	if [%1]==[-r] (
+		set remoteFlag=true
+	) else (
+		set projectName=%1
+	)
+	shift
+	goto options
 
 :projectSetup
+	if [%projectName%]==[] (
+		goto errorName
+	)
 	echo Setting Up Project %projectName%
 	where git >nul 2>nul
-	if "%errorlevel%"=="1" (
+	if [%errorlevel%]==[1] (
 		set gitFlag=false
 	)
 	set packageName=%projectName%
@@ -60,10 +55,10 @@ if "%1"=="" (
 	set packageName=%packageName:Y=y%
 	set packageName=%packageName:Z=z%
 	call propn
-	if "%remoteFlag%"=="false" (
+	if [%remoteFlag%]==[false] (
 		call uprcopy %projectName% %dirProjectWeb% TemplateX
 	) else (
-		if "%gitFlag%"=="false" (
+		if [%gitFlag%]==[false] (
 			goto errorGit
 		) else (
 			call uprremote %projectName% %remoteProjectWeb% TemplateX
