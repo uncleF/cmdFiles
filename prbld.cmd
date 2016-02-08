@@ -2,19 +2,33 @@
 
 @echo off
 
-set criticalFlag=false
 set builder=grunt
+set criticalFlag=false
+set legacy=false
 
+if "%1"=="-a" (
+	set builder=ant
+	set legacy=true
+	goto build
+)
+if "%2"=="-a" (
+	set builder=ant
+	set legacy=true
+	goto build
+)
 if "%1"=="-c" (
 	set criticalFlag=true
-	goto build
-) else (
-	if "%1"=="-a" (
-		set builder=ant
-		goto build
-	) else (
-		goto build
+	if "%2"=="-l" (
+		set legacy=true
 	)
+	goto build
+)
+if "%1"=="-l" (
+	set legacy=true
+	if "%2"=="-c" (
+		set criticalFlag=true
+	)
+	goto build
 )
 
 :build
@@ -27,9 +41,11 @@ if "%1"=="-c" (
 			grunt build
 		)
 	)
-	cd build
-	for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d" >nul 2>nul
-	cd ..
+	if %legacy%=="true" (
+		cd build
+		for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d" >nul 2>nul
+		cd ..
+	)
 	goto exit
 
 :exit
