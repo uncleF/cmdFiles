@@ -13,8 +13,8 @@ set sublime=false
 	if %1==-s (
 		set sublime=true
 	) else (
-		projectName=%1
-		directory=%dirProjects%\%1
+		set projectName=%1
+		set directory=%dirProjects%\%1
 	)
 	shift
 	goto options
