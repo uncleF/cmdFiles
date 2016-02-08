@@ -7,7 +7,7 @@ set projectName=
 set sublime=false
 
 :options
-	if [%1]==[] (
+	if %1== (
 		goto open
 	)
 	if %1==-s (
@@ -23,5 +23,5 @@ set sublime=false
 	%homeDirProjects%
 	cd %directory%
 	if %sublime%==true (
-		subl --project %projectName.sublime-project
+		subl --project %projectName%.sublime-project
 	)
