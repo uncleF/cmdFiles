@@ -1,21 +1,21 @@
-::Setup App Project
+:: Setup App Project
 
 @echo off
 
-set projectName=
-set packageName=
-set remoteFlag=false
 set gitFlag=true
+set packageName=
+set projectName=
+set remoteFlag=false
 
 :options
 	if [%1]==[] (
 		goto projectSetup
 	)
-	if [%1]==[-r] (
+	if %1==-r (
 		set remoteFlag=true
 	) else (
 		set projectName=%1
-		if NOT [%2]==[] if NOT [%2]==[-r] (
+		if NOT [%2]==[] if NOT %2==-r (
 			set packageName=%2
 			shift
 		)
@@ -29,15 +29,15 @@ set gitFlag=true
 	)
 	echo Setting Up App Project %projectName%
 	where git >nul 2>nul
-	if [%errorlevel%]==[1] (
+	if %errorlevel%==1 (
 		set gitFlag=false
 	)
 	call propn
-	if [%remoteFlag%]==[false] (
+	if %remoteFlag%==false (
 		call uprcopy %projectName% %dirProjectApp% AppX
 		md meta
 	) else (
-		if [%gitFlag%]==[false] (
+		if %gitFlag%==false (
 			goto errorGit
 		) else (
 			call uprremote %projectName% %remoteProjectApp% AppX

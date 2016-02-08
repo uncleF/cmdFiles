@@ -1,4 +1,4 @@
-::Setup Mail Project
+:: Setup Mail Project
 
 @echo off
 
@@ -10,7 +10,7 @@ set remoteFlag=false
 	if [%1]==[] (
 		goto projectSetup
 	)
-	if [%1]==[-r] (
+	if %1==-r (
 		set remoteFlag=true
 	) else (
 		set projectName=%1
@@ -24,14 +24,14 @@ set remoteFlag=false
 	)
 	echo Setting Up Mail Template Project %projectName%
 	where git >nul 2>nul
-	if "%errorlevel%"=="1" (
+	if %errorlevel%==1 (
 		set gitFlag=false
 	)
 	call propn
-	if "%remoteFlag%"=="false" (
+	if %remoteFlag%==false (
 		call uprcopy %projectName% %dirProjectMail% MailX
 	) else (
-		if "%gitFlag%"=="false" (
+		if %gitFlag%==false (
 			goto errorGit
 		) else (
 			call uprremote %projectName% %remoteProjectMail% MailX

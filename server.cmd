@@ -9,11 +9,11 @@ set port=8000
 	if [%1]==[] (
 		goto server
 	)
-	if [%1]==[-d] if NOT [%2]==[] if NOT [%2]==[-p] (
+	if %1==-d if NOT [%2]==[] if NOT %2==-p (
 		set directory=%2
 		shift
 	)
-	if [%1]==[-p] if NOT [%2]==[] if NOT [%2]==[-d] (
+	if %1==-p if NOT [%2]==[] if NOT %2==-d (
 		set port=%2
 		shift
 	)

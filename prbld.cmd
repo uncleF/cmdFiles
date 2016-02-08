@@ -8,33 +8,33 @@ set legacy=false
 
 :options
 	if [%1]==[] (
-		goto projectSetup
+		goto build
 	)
-	if [%1]==[-a] (
+	if %1==-a (
 		set builder=ant
 		set legacy=true
 		goto build
 	)
-	if [%1]==[-c] (
+	if %1==-c (
 		set criticalFlag=true
 	)
-	if [%1]==[-l] (
+	if %1==-l (
 		set legacy=true
 	)
 	shift
 	goto options
 
 :build
-	if %builder%=="ant" (
+	if %builder%==ant (
 		ant -propertyfile %buildProperties%
 	) else (
-		if %criticalFlag%=="true" (
+		if %criticalFlag%==true (
 			grunt build-critical
 		) else (
 			grunt build
 		)
 	)
-	if %legacy%=="true" (
+	if %legacy%==true (
 		cd build
 		for /f "delims=" %%d in ('dir /s /b /ad ^| sort /r') do rd "%%d" >nul 2>nul
 		cd ..
