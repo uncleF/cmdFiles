@@ -87,7 +87,7 @@ set gitFlag=true
 
 :npmInstall
 	npm cache clear
-	npm i --save-dev
+	npm i --save
 	goto exit
 
 :errorName
