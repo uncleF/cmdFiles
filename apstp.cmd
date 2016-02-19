@@ -103,7 +103,8 @@ set remoteFlag=false
 
 :npmInstall
 	npm cache clear
-	npm i --save
+	npm update --save
+	npm update --save-dev
 	goto exit
 
 :errorName
