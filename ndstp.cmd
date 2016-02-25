@@ -1,4 +1,4 @@
-:: Setup App Project
+:: Setup Node.js App Project
 
 @echo off
 
@@ -34,21 +34,27 @@ set remoteFlag=false
 	)
 	call propn
 	if %remoteFlag%==false (
-		call uprcopy %projectName% %dirProjectApp% AppX
+		call uprcopy %projectName% %dirProjectNode% AppXN
+		md %projectName%
+		cd %projectName%
+		md dev
+		xcopy %dirProjectNode%\dev dev /s /q /y >nul 2>nul
 		md tests
-		xcopy %dirProjectApp%\tests tests /s /q /y >nul 2>nul
+		xcopy %dirProjectNode%\tests tests /s /q /y >nul 2>nul
+		copy %dirProjectNode%\package.json /y >nul 2>nul
+		copy %dirProjectNode%\.*rc /y >nul 2>nul
+		copy %dirProjectNode%\.editorconfig /y >nul 2>nul
+		copy %dirProjectNode%\.gitattributes /y >nul 2>nul
+		copy %dirProjectNode%\.gitignore /y >nul 2>nul
+		copy %dirProjectNode%\.npmignore /y >nul 2>nul
+		copy %dirProjectNode%\AppXN.sublime-project .\%projectName%.sublime-project /y >nul 2>nul
 	) else (
 		if %gitFlag%==false (
 			goto errorGit
 		) else (
-			call uprremote %projectName% %remoteProjectApp% AppX
-			rd meta /s /q >nul 2>nul
+			call uprremote %projectName% %remoteProjectNode% AppXN
 		)
 	)
-	call uprcleanup
-	md design
-	md sources
-	md meta
 	if [%packageName%]==[] (
 		set packageName=%projectName%
 		set packageName=%packageName:A=a%
@@ -78,8 +84,11 @@ set remoteFlag=false
 		set packageName=%packageName:Y=y%
 		set packageName=%packageName:Z=z%	
 	)
-	call uprreplace %projectName% AppX %packageName% appx
-	replaceText gruntfile.js appx %packageName%
+	replaceText gruntfile.js %projectName% %projectName%
+	replaceText package.json %projectName% %projectName%
+	replaceText backstop.json %projectName% %projectName%
+	replaceText %projectName%.sublime-project %projectName% %projectName%
+	replaceText package.json appx %packageName%
 	goto npmQuestion
 
 :npmQuestion

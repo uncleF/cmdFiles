@@ -57,6 +57,8 @@ set gitFlag=true
 	call propn
 	if %remoteFlag%==false (
 		call uprcopy %projectName% %dirProjectWeb% TemplateX
+		md tests
+		xcopy %dirProjectWeb%\tests tests /s /q /y >nul 2>nul
 	) else (
 		if %gitFlag%==false (
 			goto errorGit

@@ -7,7 +7,6 @@ md %1
 cd %1
 md dev
 xcopy %2\dev dev /s /q /y >nul 2>nul
-xcopy %2\tests tests /s /q /y >nul 2>nul
 copy %2\gruntfile.js /y >nul 2>nul
 copy %2\package.json /y >nul 2>nul
 copy %2\backstop.json /y >nul 2>nul
