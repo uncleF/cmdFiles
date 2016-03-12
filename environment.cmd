@@ -6,7 +6,7 @@ setx dirTemp %homeDirProjects%\Temp >nul 2>nul
 setx dirProjectWeb %dirProjects%\TemplateX >nul 2>nul
 setx dirProjectApp %dirProjects%\AppX >nul 2>nul
 setx dirProjectMail %dirProjects%\MailX >nul 2>nul
-setx dirProjectNode %dirProjects%\Node >nul 2>nul
+setx dirProjectNode %dirProjects%\AppXN >nul 2>nul
 setx dirProjectCmd %dirProjects%\cmdFiles >nul 2>nul
 setx remoteHome https://github.com/uncleF >nul 2>nul
 setx remoteProjectWeb %remoteHome%/TemplateX.git >nul 2>nul
