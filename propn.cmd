@@ -5,6 +5,7 @@
 set directory=%dirProjects%
 set project=
 set sublime=false
+set new=false
 
 :options
 	if [%1]==[] (
@@ -12,7 +13,11 @@ set sublime=false
 	)
 	if [%1]==[-s] (
 		set sublime=true
-	) else (
+	) 
+	if [%1]==[-n] (
+		set new=true
+	)
+	if NOT [%1]==[] if NOT [%1]==[-s] if NOT [%1]==[-n] (
 		set project=%1
 		set directory=%dirProjects%\%1
 	)
@@ -23,5 +28,9 @@ set sublime=false
 	%homeDirProjects%
 	cd %directory%
 	if %sublime%==true (
-		subl --project %project%.sublime-project
+		if %new%==true (
+			subl --project %project%.sublime-project -n
+		) else (
+			subl --project %project%.sublime-project -a
+		)
 	)

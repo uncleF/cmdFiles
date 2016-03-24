@@ -29,9 +29,9 @@ set legacy=false
 		ant -propertyfile %buildProperties%
 	) else (
 		if %criticalFlag%==true (
-			grunt build-critical
+			grunt build-critical %*
 		) else (
-			grunt build
+			grunt build %*
 		)
 	)
 	if %legacy%==true (
