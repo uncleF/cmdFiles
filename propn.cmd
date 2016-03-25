@@ -13,11 +13,7 @@ set new=false
 	)
 	if [%1]==[-s] (
 		set sublime=true
-	) 
-	if [%1]==[-n] (
-		set new=true
-	)
-	if NOT [%1]==[] if NOT [%1]==[-s] if NOT [%1]==[-n] (
+	) else (
 		set project=%1
 		set directory=%dirProjects%\%1
 	)
@@ -28,9 +24,5 @@ set new=false
 	%homeDirProjects%
 	cd %directory%
 	if %sublime%==true (
-		if %new%==true (
-			subl --project %project%.sublime-project -n
-		) else (
-			subl --project %project%.sublime-project -a
-		)
+		subl --project %project%.sublime-project
 	)
