@@ -18,6 +18,14 @@ set gitFlag=true
 	shift
 	goto options
 
+:errorName
+	echo Please Enter Project Name
+	goto exit
+
+:errorGit
+	echo Git is not available
+	goto exit
+
 :projectSetup
 	if [%projectName%]==[] (
 		goto errorName
@@ -72,37 +80,6 @@ set gitFlag=true
 	md sources
 	md meta
 	call uprreplace %projectName% TemplateX %packageName% templatex
-	goto npmQuestion
-
-:npmQuestion
-	set npm=
-	set /p npm="Do You Want to Install npm Dependencies (y/n)? "
-	if %npm%==y (
-		goto npmInstall
-	) else (
-		if %npm%==n (
-			goto exit
-		) else (
-			goto errorAnswer
-		)
-	)
-
-:npmInstall
-	npm cache clear
-	npm update --save
-	npm update --save-dev
-	goto exit
-
-:errorName
-	echo Please Enter Project Name
-	goto exit
-
-:errorAnswer
-	echo Please Answer (y)es or (n)o
-	goto npmQuestion
-
-:errorGit
-	echo Git is not available
-	goto exit
+	call uprnpm
 
 :exit

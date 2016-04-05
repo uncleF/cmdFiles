@@ -18,6 +18,14 @@ set remoteFlag=false
 	shift
 	goto options
 
+:errorName
+	echo Please Enter Project Name
+	goto exit
+
+:errorGit
+	echo Git is not available
+	goto exit
+
 :projectSetup
 	if [%projectName%]==[] (
 		goto errorName
@@ -43,37 +51,6 @@ set remoteFlag=false
 	replaceText gruntfile.js MailX %projectName%
 	replaceText backstop.json MailX %projectName%
 	replaceText %projectName%.sublime-project MailX %projectName%
-	goto npmQuestion
-
-:npmQuestion
-	set npm=
-	set /p npm="Do You Want to Install npm Dependencies (y/n)? "
-	if %npm%==y (
-		goto npmInstall
-	) else (
-		if %npm%==n (
-			goto exit
-		) else (
-			goto errorAnswer
-		)
-	)
-
-:npmInstall
-	npm cache clear
-	npm update --save
-	npm update --save-dev
-	goto exit
-
-:errorName
-	echo Please Enter Project Name
-	goto exit
-
-:errorAnswer
-	echo Please Answer (y)es or (n)o
-	goto npmQuestion
-
-:errorGit
-	echo Git is not available
-	goto exit
+	call uprnpm
 
 :exit
