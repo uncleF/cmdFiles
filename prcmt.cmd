@@ -21,7 +21,7 @@ set remote=origin
 	goto options
 
 :commit
-	git pull
 	git add -A
 	git commit -a -m %message%
+	git pull
 	git push %remote%
