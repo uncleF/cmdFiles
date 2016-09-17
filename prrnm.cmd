@@ -26,8 +26,8 @@ set newProjectName=
 		goto errorName
 	)
 	if exist dev (
-		echo Renaming Project %oldProjectName%
 		set oldProjectName=%cd%
+		echo Renaming Project %oldProjectName%
 		set oldPackageName=%oldProjectName%
 		set oldPackageName=%oldPackageName:A=a%
 		set oldPackageName=%oldPackageName:B=b%
