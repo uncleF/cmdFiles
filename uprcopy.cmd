@@ -10,7 +10,6 @@ md grunt
 xcopy %2\grunt grunt /s /q /y >nul 2>nul
 copy %2\gruntfile.js /y >nul 2>nul
 copy %2\package.json /y >nul 2>nul
-copy %2\backstop.json /y >nul 2>nul
 copy %2\.*.yml /y >nul 2>nul
 copy %2\.*rc /y >nul 2>nul
 copy %2\.editorconfig /y >nul 2>nul
