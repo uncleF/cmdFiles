@@ -49,7 +49,6 @@ set remoteFlag=false
 	md design
 	md sources
 	replaceText gruntfile.js MailX %projectName%
-	replaceText backstop.json MailX %projectName%
 	replaceText %projectName%.sublime-project MailX %projectName%
 	call uprnpm
 

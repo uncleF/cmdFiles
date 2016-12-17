@@ -86,7 +86,6 @@ set remoteFlag=false
 	)
 	replaceText gruntfile.js %projectName% %projectName%
 	replaceText package.json %projectName% %projectName%
-	replaceText backstop.json %projectName% %projectName%
 	replaceText %projectName%.sublime-project %projectName% %projectName%
 	replaceText package.json appx %packageName%
 	goto npmQuestion

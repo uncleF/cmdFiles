@@ -14,18 +14,19 @@ set folder=sprites
 	goto options
 
 :sorting
-	set folder2x=%folder%@2x
-	set folder3x=%folder%@3x
-	md %folder%
-	md %folder2x%
-	md %folder3x%
-	move *@3x.png %folder3x%\ >nul 2>nul
-	move *@3x.jpg %folder3x%\ >nul 2>nul
-	move *@2x.png %folder2x%\ >nul 2>nul
-	move *@2x.jpg %folder2x%\ >nul 2>nul
-	move *.png %folder%\ >nul 2>nul
-	move *.jpg %folder%\ >nul 2>nul
-	move *.svg %folder%\ >nul 2>nul
-	xcopy %folder3x% %folder3x% /S /y >nul 2>nul
-	xcopy %folder2x% %folder2x% /S /y >nul 2>nul
-	xcopy %folder% %folder% /S /y >nul 2>nul
+echo Sorting Sprites
+call usptcopy Phone@3x %folder%
+call usptcopy Phone@2x %folder%
+call usptcopy Phone %folder%
+call usptcopy @3x %folder%
+call usptcopy @2x %folder%
+for %%f in (*@1x.*) do (
+	set filename=%%f
+	set extention=%%~xf
+	ren %filename% %filename:~0,-7%%extention%
+)
+md %folder% >nul 2>nul
+move *.png %folder%\ >nul 2>nul
+move *.jpg %folder%\ >nul 2>nul
+move *.svg %folder%\ >nul 2>nul
+xcopy %folder% %folder% /S /y >nul 2>nul
