@@ -4,6 +4,7 @@
 
 set projectName=
 set remoteFlag=false
+set branch=master
 set gitFlag=true
 
 :options
@@ -12,8 +13,14 @@ set gitFlag=true
 	)
 	if [%1]==[-r] (
 		set remoteFlag=true
-	) else (
-		set projectName=%1
+	)
+	if [%1]==[-n] if NOT [%2]==[] if NOT [%2]==[-r] if NOT [%2]==[-b] (
+		set projectName=%2
+		shift
+	)
+	if [%1]==[-b] if NOT [%2]==[] if NOT [%2]==[-r] if NOT [%2]==[-n] (
+		set branch=%2
+		shift
 	)
 	shift
 	goto options
@@ -64,14 +71,14 @@ set gitFlag=true
 	set packageName=%packageName:Z=z%
 	call propn
 	if %remoteFlag%==false (
-		call uprcopy %projectName% %dirProjectWeb% TemplateX
+		call uprcopy %projectName% %dirProjectWeb% TemplateX %branch%
 		md tests
 		xcopy %dirProjectWeb%\tests tests /s /q /y >nul 2>nul
 	) else (
 		if %gitFlag%==false (
 			goto errorGit
 		) else (
-			call uprremote %projectName% %remoteProjectWeb% TemplateX
+			call uprremote %projectName% %remoteProjectWeb% TemplateX %branch%
 			rd meta /s /q >nul 2>nul
 		)
 	)
@@ -82,4 +89,4 @@ set gitFlag=true
 	call uprreplace %projectName% TemplateX %packageName% templatex
 	call uprnpm
 
-:exit
+:exit2

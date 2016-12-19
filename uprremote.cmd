@@ -2,7 +2,7 @@
 
 @echo off
 
-git clone %2 %1
+git clone -b %4 %2 %1
 cd %1
 rd .git /s /q >nul 2>nul
 del .\*.md /s /f /q >nul 2>nul

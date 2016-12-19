@@ -2,10 +2,11 @@
 
 @echo off
 
-set gitFlag=true
-set packageName=
 set projectName=
+set packageName=
 set remoteFlag=false
+set branch=master
+set gitFlag=true
 
 :options
 	if [%1]==[] (
@@ -13,12 +14,18 @@ set remoteFlag=false
 	)
 	if [%1]==[-r] (
 		set remoteFlag=true
-	) else (
-		set projectName=%1
-		if NOT [%2]==[] if NOT [%2]==[-r] (
-			set packageName=%2
-			shift
-		)
+	)
+	if [%1]==[-n] if NOT [%2]==[] if NOT [%2]==[-r] if NOT [%2]==[-b] if NOT [%2]==[-p] (
+		set projectName=%2
+		shift
+	)
+	if [%1]==[-p] if NOT [%2]==[] if NOT [%2]==[-r] if NOT [%2]==[-b] if NOT [%2]==[-p] (
+		set packageName=%2
+		shift
+	)
+	if [%1]==[-b] if NOT [%2]==[] if NOT [%2]==[-r] if NOT [%2]==[-n] if NOT [%2]==[-p] (
+		set branch=%2
+		shift
 	)
 	shift
 	goto options
@@ -34,7 +41,10 @@ set remoteFlag=false
 	)
 	call propn
 	if %remoteFlag%==false (
-		call uprcopy %projectName% %dirProjectNode% AppXN
+		cd %dirProjectNode%
+		set original=$(git symbolic-ref --short -q HEAD)
+		git checkout %branch% >nul 2>nul
+		cd ..
 		md %projectName%
 		cd %projectName%
 		md dev
@@ -48,11 +58,14 @@ set remoteFlag=false
 		copy %dirProjectNode%\.gitignore /y >nul 2>nul
 		copy %dirProjectNode%\.npmignore /y >nul 2>nul
 		copy %dirProjectNode%\AppXN.sublime-project .\%projectName%.sublime-project /y >nul 2>nul
+		cd %dirProjectNode%
+		git checkout %original% >nul 2>nul
+		cd ../%projectName%
 	) else (
 		if %gitFlag%==false (
 			goto errorGit
 		) else (
-			call uprremote %projectName% %remoteProjectNode% AppXN
+			call uprremote %projectName% %remoteProjectNode% AppXN  %branch%
 		)
 	)
 	if [%packageName%]==[] (

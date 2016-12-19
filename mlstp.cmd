@@ -2,9 +2,10 @@
 
 @echo off
 
-set gitFlag=true
 set projectName=
 set remoteFlag=false
+set branch=master
+set gitFlag=true
 
 :options
 	if [%1]==[] (
@@ -12,8 +13,14 @@ set remoteFlag=false
 	)
 	if [%1]==[-r] (
 		set remoteFlag=true
-	) else (
-		set projectName=%1
+	)
+	if [%1]==[-n] if NOT [%2]==[] if NOT [%2]==[-r] if NOT [%2]==[-b] (
+		set projectName=%2
+		shift
+	)
+	if [%1]==[-b] if NOT [%2]==[] if NOT [%2]==[-r] if NOT [%2]==[-n] (
+		set branch=%2
+		shift
 	)
 	shift
 	goto options
@@ -37,12 +44,12 @@ set remoteFlag=false
 	)
 	call propn
 	if %remoteFlag%==false (
-		call uprcopy %projectName% %dirProjectMail% MailX
+		call uprcopy %projectName% %dirProjectMail% MailX %branch%
 	) else (
 		if %gitFlag%==false (
 			goto errorGit
 		) else (
-			call uprremote %projectName% %remoteProjectMail% MailX
+			call uprremote %projectName% %remoteProjectMail% MailX %branch%
 		)
 	)
 	call uprcleanup
