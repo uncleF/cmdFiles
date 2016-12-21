@@ -2,4 +2,4 @@
 
 @echo off
 
-call prstp %*
+call prstp -n %*

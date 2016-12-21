@@ -2,4 +2,4 @@
 
 @echo off
 
-call prstp -b rutorika %*
+call prstp -b rutorika -n %*
