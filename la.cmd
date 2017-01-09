@@ -2,4 +2,4 @@
 
 @echo off
 
-propn LuchaAsteroid
+call propn LuchaAsteroid

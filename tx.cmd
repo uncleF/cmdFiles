@@ -2,4 +2,4 @@
 
 @echo off
 
-propn TemplateX
+call propn TemplateX

@@ -2,4 +2,4 @@
 
 @echo off
 
-propn MailX -s
+call propn MailX -s

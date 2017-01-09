@@ -2,4 +2,4 @@
 
 @echo off
 
-pope MailX
+call pope MailX

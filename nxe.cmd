@@ -2,4 +2,4 @@
 
 @echo off
 
-pope AppXN
+call pope AppXN

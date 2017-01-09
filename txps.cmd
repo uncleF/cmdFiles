@@ -2,4 +2,4 @@
 
 @echo off
 
-propn TemplateXPatterns -s
+call propn TemplateXPatterns -s

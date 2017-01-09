@@ -2,4 +2,4 @@
 
 @echo off
 
-pope LuchaAsteroid
+call pope LuchaAsteroid

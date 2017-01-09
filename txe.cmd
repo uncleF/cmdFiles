@@ -2,4 +2,4 @@
 
 @echo off
 
-pope TemplateX
+call pope TemplateX

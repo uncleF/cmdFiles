@@ -2,4 +2,4 @@
 
 @echo off
 
-propn AppXN -s
+call propn AppXN -s

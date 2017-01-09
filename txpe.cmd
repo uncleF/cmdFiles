@@ -2,4 +2,4 @@
 
 @echo off
 
-pope TemplateXPatterns
+call pope TemplateXPatterns
