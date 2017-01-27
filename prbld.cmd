@@ -6,6 +6,7 @@ set builder=grunt
 set criticalFlag=false
 set legacy=false
 set fast=false
+set site=false
 
 :options
 	if [%1]==[] (
@@ -19,12 +20,16 @@ set fast=false
 	if [%1]==[-c] (
 		set criticalFlag=true
 	)
-	if [%1]==[-l] (
-		set legacy=true
-	)
 	if [%1]==[-f] (
 		set fast=true
 		goto build
+	)
+	if [%1]==[-s] (
+		set site=true
+		goto build
+	)
+	if [%1]==[-l] (
+		set legacy=true
 	)
 	shift
 	goto options
@@ -34,16 +39,24 @@ set fast=false
 		ant -propertyfile %buildProperties%
 	) else (
 		if %criticalFlag%==true (
-			if %fast%==true (
-				grunt build-critical-fast %*
+			if %site%==true (
+				grunt build-critical-site %*
 			) else (
-				grunt build-critical %*
+				if %fast%==true (
+					grunt build-critical-fast %*
+				) else (
+					grunt build-critical %*
+				)
 			)
 		) else (
-			if %fast%==true (
-				grunt build-fast %*
+			if %site%==true (
+				grunt build-site %*
 			) else (
-				grunt build %*
+				if %fast%==true (
+					grunt build-fast %*
+				) else (
+					grunt build %*
+				)
 			)
 		)
 	)
