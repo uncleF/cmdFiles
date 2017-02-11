@@ -1,4 +1,4 @@
-:: Check Remote Repos
+:: Change All Repos to master
 
 @echo off
 
