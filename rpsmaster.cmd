@@ -7,7 +7,7 @@ for /f "delims=" %%d in ('dir /b /ad') do (
 	cd %%d
 	if exist .git (
 		echo %%d
-		git fetch --dry-run --all
+		git checkout master
 		echo ----------------------------------------------------------------------
 	)
 	cd ..
