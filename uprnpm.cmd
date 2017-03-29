@@ -16,8 +16,15 @@
 	)
 
 :npmInstall
-	call npm cache clear
-	call npm update --save-dev
+	where yarn >nul 2>nul
+	if %errorlevel%==1 (
+		call npm cache clear
+		call npm update --save-dev
+	) else (
+		call yarn cache clean
+		call yarn install --dev
+	)
+
 	goto exit
 
 :errorAnswer

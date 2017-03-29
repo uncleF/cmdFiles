@@ -2,7 +2,7 @@
 
 @echo off
 
-echo Updating the Tools
+echo Updating Tools
 
 %homeDirProjects%
 cd %dirCmdTools%
