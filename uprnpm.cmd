@@ -18,12 +18,13 @@
 :npmInstall
 	::	where yarn >nul 2>nul
 	::	if %errorlevel%==1 (
-		call npm cache clear
+		call npm cache clear --force
 		call npm update --save-dev
 	::	) else (
 	::		call yarn cache clean
 	::		call yarn install --dev
 	::	)
+	call npm run txfullinstall
 
 	goto exit
 
