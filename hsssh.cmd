@@ -4,5 +4,5 @@
 
 set back=%~dp0
 call hshm
-vagrant ssh
+vagrant ssh %*
 cd %back%

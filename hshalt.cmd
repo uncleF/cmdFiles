@@ -4,5 +4,5 @@
 
 set back=%~dp0
 call hshm
-vagrant halt
+vagrant halt %*
 cd %back%
