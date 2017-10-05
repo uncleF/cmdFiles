@@ -2,4 +2,8 @@
 
 @echo off
 
-subl --project *.sublime-project
+if exist *.sublime-project (
+  subl --project *.sublime-project
+) else (
+  subl ./
+)

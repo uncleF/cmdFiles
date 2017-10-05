@@ -24,5 +24,5 @@ set new=false
 	%homeDirProjects%
 	cd %directory%
 	if %sublime%==true (
-		subl --project %project%.sublime-project
+		call sbl
 	)
