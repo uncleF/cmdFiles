@@ -2,4 +2,5 @@
 
 @echo off
 
+C:
 cd %homesteadHome%
