@@ -23,7 +23,7 @@ setx remoteProjectWeb %remoteHome%/TemplateX.git >nul 2>nul
 setx remoteProjectMail %remoteHome%/MailX.git >nul 2>nul
 setx remoteProjectNode %remoteHome%/AppXN.git >nul 2>nul
 
-setx homesteadHome C:\Homestead >nul 2>nul
+setx homesteadHome %homeDirProjects%\Projects\Tools\Homestead >nul 2>nul
 
 setx buildProperties %dirProjects%\antBuild.properties >nul 2>nul
 setx buildJSON %dirProjects%\gruntBuild.json >nul 2>nul
