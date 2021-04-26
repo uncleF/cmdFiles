@@ -1,5 +1,3 @@
-:: Open Project
-
 :: Open HG Studio
 
 @echo off

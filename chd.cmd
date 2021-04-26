@@ -1,5 +1,5 @@
-:: Checkout dev Branch
+:: Checkout develop Branch
 
 @echo off
 
-call git checkout dev
+call git checkout develop
