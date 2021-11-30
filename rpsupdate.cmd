@@ -11,8 +11,8 @@ for /f "delims=" %%d in ('dir /b /ad') do (
 		git pull --all
 		git remote prune origin
 		git remote update --prune
-		for /F "tokens=*" %%branch in ('git for-each-ref --format="%%(refname:short)" refs/heads') do (
-			git checkout %%branch
+		for /F "tokens=*" %%b in ('git for-each-ref --format="%%(refname:short)" refs/heads') do (
+			git checkout %%b
 			git pull
 		)
 		git checkout master
