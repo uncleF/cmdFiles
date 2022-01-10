@@ -8,6 +8,7 @@ choco install choco-cleaner
 :: Packages
 
 choco install ffmpeg -fy
+choco install fzf -fy
 choco install guetzli -fy
 choco install imagemagick.app -fy
 choco install nodejs -fy
