@@ -25,11 +25,10 @@ setx remoteProjectNode %remoteHome%/AppXN.git >nul 2>nul
 
 setx dirBE %homeDirProjects%\Projects\BE >nul 2>nul
 
-setx homesteadHome %homeDirProjects%\Projects\Tools\Homestead >nul 2>nul
-
 setx buildProperties %dirProjects%\antBuild.properties >nul 2>nul
 setx buildJSON %dirProjects%\gruntBuild.json >nul 2>nul
 
+setx dirDoopy %homeDirProjects%\Projects\DoopyDoopGames >nul 2>nul
 setx dirHG %homeDirProjects%\Projects\HGStudio >nul 2>nul
 setx dirRuPort %homeDirProjects%\Projects\RuPort >nul 2>nul
 setx dirYazoo %homeDirProjects%\Projects\yazoo >nul 2>nul
