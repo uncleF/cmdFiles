@@ -24,6 +24,7 @@ choco install anki -fy
 choco install blender -fy
 choco install ccleaner -fy
 choco install cyberduck -fy
+choco install discord -fy
 choco install docker-desktop -fy
 choco install dropbox -fy
 choco install epicgameslauncher -fy
