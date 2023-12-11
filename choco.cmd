@@ -33,10 +33,14 @@ choco install figma -fy
 choco install fontforge -fy
 choco install googledrive -fy
 choco install inkscape -fy
+choco install irfanview -fy
 choco install itunes -fy
 choco install krita -fy
 choco install make -fy
+choco install monosnap -fy
+choco install mp3tag -fy
 choco install notion -fy
+choco install openoffice -fy
 choco install pia -fy
 choco install potplayer -fy
 choco install puntoswitcher -fy
@@ -58,6 +62,7 @@ choco install virtualbox -fy
 choco install vscode -fy
 choco install vlc -fy
 choco install whatsapp -fy
+choco install windirstat -fy
 choco install winrar -fy
 choco install wkhtmltopdf -fy
 choco install zoom -fy
