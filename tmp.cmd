@@ -2,5 +2,5 @@
 
 @echo off
 
-%homeDirProjects%
+%homeDirFiles%
 cd %dirTemp%

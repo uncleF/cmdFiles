@@ -2,7 +2,7 @@
 
 @echo off
 
-set directory=%dirProjects%
+set directory=%dirPersonal%
 set project=
 set sublime=false
 set new=false
@@ -15,7 +15,7 @@ set new=false
 		set sublime=true
 	) else (
 		set project=%1
-		set directory=%dirProjects%\%1
+		set directory=%dirPersonal%\%1
 	)
 	shift
 	goto options

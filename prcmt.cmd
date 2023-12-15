@@ -2,7 +2,7 @@
 
 @echo off
 
-set message="Project Update"
+set message="update project"
 set remote=origin
 
 :options
