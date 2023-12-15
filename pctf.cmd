@@ -2,4 +2,4 @@
 
 @echo off
 
-call prcmt -m "Project Fixes"
+call prcmt -m "fixes"

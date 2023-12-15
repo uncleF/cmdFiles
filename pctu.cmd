@@ -2,4 +2,4 @@
 
 @echo off
 
-call prcmt -m "Project Update"
+call prcmt -m "update project"
