@@ -1,7 +1,6 @@
 :: Open Project
 
 @echo off
-setlocal
 
 set directory=%dirPersonal%
 set project=
@@ -27,5 +26,3 @@ set new=false
 	if %sublime%==true (
 		call sbl
 	)
-
-endlocal

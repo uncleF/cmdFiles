@@ -1,7 +1,6 @@
 :: Watch Current Project with GruntJS watch-project Task
 
 @echo off
-setlocal
 
 if exist dev (
 	grunt watch-project
@@ -15,5 +14,3 @@ if exist dev (
 	goto exit
 
 :exit
-
-endlocal

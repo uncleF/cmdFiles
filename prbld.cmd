@@ -1,7 +1,6 @@
 :: Build Current Project using GruntJS by Default or Apache ANT
 
 @echo off
-setlocal
 
 set builder=grunt
 set criticalFlag=false
@@ -69,5 +68,3 @@ set site=false
 	goto exit
 
 :exit
-
-endlocal

@@ -1,7 +1,6 @@
 :: Copy Utility
 
 @echo off
-setlocal
 
 cd %2
 set original=$(git symbolic-ref --short -q HEAD)
@@ -25,5 +24,3 @@ copy %2\%3.sublime-project .\%1.sublime-project /y >nul 2>nul
 cd %2
 git checkout %original% >nul 2>nul
 cd ../%1
-
-endlocal

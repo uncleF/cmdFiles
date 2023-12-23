@@ -1,7 +1,6 @@
 :: Start Local HTTP Server and Serve Current Project (/build Directory By Default or Some Other if Specified)
 
 @echo off
-setlocal
 
 set directory=build
 set port=8000
@@ -30,5 +29,3 @@ set port=8000
 	) else (
 		echo "Nothing to Serve / Missing Directory"
 	)
-
-endlocal

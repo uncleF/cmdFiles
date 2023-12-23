@@ -1,7 +1,6 @@
 :: Commit and Push Project Changes
 
 @echo off
-setlocal
 
 set message="update project"
 set remote=origin

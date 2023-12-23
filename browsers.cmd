@@ -1,7 +1,6 @@
 :: Start All Browsers (Current Stable Releases or Nightly Builds) With an Empty Tab or Go To Specified URL (http://localhost:8000 by Default)
 
 @echo off
-setlocal
 
 set emptyFlag=false
 set nightlyFlag=false
@@ -59,5 +58,3 @@ set nextPath="C:\Program Files (x86)\Opera beta\launcher.exe"
 			start "Microsoft Edge" microsoft-edge:%url%
 		)
 	)
-
-endlocal

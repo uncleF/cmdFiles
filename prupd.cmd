@@ -1,7 +1,6 @@
 :: Update Project Settings
 
 @echo off
-setlocal
 
 set project=%dirProjectWeb%
 

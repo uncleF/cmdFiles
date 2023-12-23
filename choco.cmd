@@ -1,5 +1,4 @@
 @echo off
-setlocal
 
 :: Chocolatey
 
@@ -83,5 +82,3 @@ choco install brave -fy
 
 echo "Also install: 1Password, ApexDC++, Aseprite, CDispay, Chrome Canary, Cmder, Defold, Figma, Rive, Spine, TickTick, TOR"
 pause
-
-endlocal

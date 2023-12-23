@@ -1,7 +1,6 @@
 :: Setup Node.js App Project
 
 @echo off
-setlocal
 
 set projectName=
 set packageName=
@@ -136,5 +135,3 @@ set gitFlag=true
 	goto exit
 
 :exit
-
-endlocal

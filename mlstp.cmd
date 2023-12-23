@@ -1,7 +1,6 @@
 :: Setup Mail Project
 
 @echo off
-setlocal
 
 set projectName=
 set remoteFlag=false
@@ -61,5 +60,3 @@ set gitFlag=true
 	call uprnpm
 
 :exit
-
-endlocal

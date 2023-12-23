@@ -1,7 +1,6 @@
 :: npm Install Utility
 
 @echo off
-setlocal
 
 :npmQuestion
 	set npm=
@@ -29,5 +28,3 @@ setlocal
 	goto npmQuestion
 
 :exit
-
-endlocal

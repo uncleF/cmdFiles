@@ -1,7 +1,6 @@
 :: Rename Current Project
 
 @echo off
-setlocal
 
 set newProjectName=
 

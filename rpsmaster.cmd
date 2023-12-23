@@ -1,7 +1,6 @@
 :: Change All Repos to master
 
 @echo off
-setlocal
 
 for /f "delims=" %%d in ('dir /b /ad') do (
 	cd %%d
@@ -12,5 +11,3 @@ for /f "delims=" %%d in ('dir /b /ad') do (
 	)
 	cd ..
 )
-
-endlocal

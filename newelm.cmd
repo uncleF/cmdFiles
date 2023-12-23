@@ -1,7 +1,6 @@
 :: Create New TX-element
 
 @echo off
-setlocal
 
 if exist dev (
   goto options
@@ -52,5 +51,3 @@ if exist dev (
   )
 
 :exit
-
-endlocal
