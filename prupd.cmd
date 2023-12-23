@@ -1,6 +1,7 @@
 :: Update Project Settings
 
 @echo off
+setlocal
 
 set project=%dirProjectWeb%
 
@@ -21,3 +22,5 @@ set project=%dirProjectWeb%
 	) else (
 		echo "This is Not a Project Root"
 	)
+
+	endlocal

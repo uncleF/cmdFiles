@@ -1,6 +1,7 @@
 :: Start Local HTTP Server and Serve Current Project
 
 @echo off
+setlocal
 
 set task=dev
 
@@ -18,3 +19,5 @@ set task=dev
 	grunt connect:%task%
 
 :exit
+
+endlocal

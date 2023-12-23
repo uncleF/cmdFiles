@@ -1,6 +1,7 @@
 :: Setup Web Project
 
 @echo off
+setlocal
 
 set projectName=
 set remoteFlag=false
@@ -89,4 +90,6 @@ set gitFlag=true
 	call uprreplace %projectName% TemplateX %packageName% templatex
 	call uprnpm
 
-:exit2
+:exit
+
+endlocal

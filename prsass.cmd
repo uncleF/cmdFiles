@@ -1,6 +1,7 @@
 :: Watch Current Project with Sass
 
 @echo off
+setlocal
 
 set compass=false
 
@@ -31,3 +32,5 @@ set compass=false
 	goto exit
 
 :exit
+
+endlocal

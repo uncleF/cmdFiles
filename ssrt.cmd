@@ -1,6 +1,7 @@
 :: Sort Sprites into Corresponding Folders
 
 @echo off
+setlocal
 
 set directory=sprites
 
@@ -30,3 +31,5 @@ move *.png %directory%\ >nul 2>nul
 move *.jpg %directory%\ >nul 2>nul
 move *.svg %directory%\ >nul 2>nul
 xcopy %directory% %directory% /S /y >nul 2>nul
+
+endlocal

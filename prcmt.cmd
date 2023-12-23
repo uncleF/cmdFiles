@@ -1,6 +1,7 @@
 :: Commit and Push Project Changes
 
 @echo off
+setlocal
 
 set message="update project"
 set remote=origin
@@ -25,3 +26,5 @@ set remote=origin
 	git commit -a -m %message%
 	git pull
 	git push %remote%
+
+	endlocal

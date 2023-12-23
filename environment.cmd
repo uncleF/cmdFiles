@@ -35,7 +35,9 @@ setx dirCmdTools %homeDirProjects%\Tools\cmdTools >nul 2>nul
 setx buildProperties %dirPersonal%\antBuild.properties >nul 2>nul
 setx buildJSON %dirPersonal%\gruntBuild.json >nul 2>nul
 
-setx PATH "%PATH%;%dirCmdTools%"
+set regKey="HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment"
+set newPath="%PATH%;%dirCmdTools%"
+reg add %regKey% /v Path /t REG_EXPAND_SZ /d %newPath% /f
 
 :: Setting Up CLI
 
