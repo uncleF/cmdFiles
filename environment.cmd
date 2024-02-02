@@ -22,8 +22,8 @@ setx remoteProjectWeb %remoteHome%/TemplateX.git >nul 2>nul
 setx remoteProjectMail %remoteHome%/MailX.git >nul 2>nul
 setx remoteProjectNode %remoteHome%/AppXN.git >nul 2>nul
 
-setx dirBE %homeDirProjects%\BuenoExcelente >nul 2>nul
 setx dirDoopy %homeDirProjects%\DoopyDoopGames >nul 2>nul
+setx dirBE %homeDirProjects%\BuenoExcelente >nul 2>nul
 setx dirHG %homeDirProjects%\HappyGamesStudio >nul 2>nul
 setx dirRuPort %homeDirProjects%\RU_PORT >nul 2>nul
 setx dirYazoo %homeDirProjects%\yazoo >nul 2>nul

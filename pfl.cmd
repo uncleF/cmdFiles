@@ -1,4 +1,4 @@
-:: Open HG Studio
+:: Open Freelance
 
 @echo off
 

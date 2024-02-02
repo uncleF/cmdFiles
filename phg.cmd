@@ -1,4 +1,4 @@
-:: Open HG Studio
+:: Open Happy Games Studio
 
 @echo off
 
