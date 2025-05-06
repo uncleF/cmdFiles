@@ -51,7 +51,4 @@ goto options
 	git pull --rebase
 	git push !remote!
 
-echo Message: "%message%"
-echo Remote: "%remote%"
-
 endlocal
