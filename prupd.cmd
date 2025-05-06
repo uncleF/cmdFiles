@@ -1,6 +1,7 @@
 :: Update Project Settings
 
 @echo off
+setlocal enabledelayedexpansion
 
 set project=%dirProjectWeb%
 
@@ -22,4 +23,4 @@ set project=%dirProjectWeb%
 		echo "This is Not a Project Root"
 	)
 
-	endlocal
+endlocal

@@ -1,6 +1,7 @@
 :: Rename Current Project
 
 @echo off
+setlocal enabledelayedexpansion
 
 set newProjectName=
 
@@ -93,4 +94,4 @@ set newProjectName=
 
 	:exit
 
-	endlocal
+endlocal
