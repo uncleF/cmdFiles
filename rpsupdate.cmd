@@ -6,7 +6,7 @@ setlocal enabledelayedexpansion
 for /f "delims=" %%d in ('dir /b /ad') do (
 	cd %%d
 	if exist .git (
-		echo %%d 
+		echo %%d
 		git config core.fileMode false >nul 2>&1
 		git fetch --all --prune >nul 2>&1
 		git pull --tags >nul 2>&1
