@@ -41,6 +41,7 @@ choco install greenshot -fy
 choco install handbrake -fy
 choco install inkscape -fy
 choco install irfanview -fy
+choco install irfanviewplugins -fy
 choco install itunes -fy
 choco install krita -fy
 choco install monosnap -fy
